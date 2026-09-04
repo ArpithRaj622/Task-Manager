@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply font-poppins bg-slate-100;
+    @apply font-poppins bg-slate-100 text-slate-800;
   }
 }
 
@@ -14,8 +14,9 @@
     /* border: 1px solid red; */
 }
 
+/* header style */
 header {
-    @apply flex justify-between px-4 py-2 bg-white shadow-md sticky top-0 z-50;
+    @apply flex justify-between px-4 py-2 bg-white shadow-md sticky top-0 z-50 md:h-14;
 }
 
 h1 {
@@ -30,6 +31,7 @@ h1 {
     @apply cursor-pointer;
 }
 
+/* mobile menu */
 .mobile-menu {
     @apply w-2/4 fixed right-0 top-0 h-full z-50 flex flex-col gap-5 bg-white shadow-xl p-2;
 }
@@ -40,4 +42,21 @@ h1 {
 
 .mobile-nav-links {
     @apply flex flex-col gap-2;
+}
+
+/* side nav desktop */
+aside {
+    @apply md:w-44 lg:w-52 fixed left-0 top-14 h-full bg-white p-5 shadow-xl hidden md:block;
+}
+
+.desktop-nav-menu {
+    @apply flex flex-col gap-4;
+}
+
+.desktop-nav-menu a {
+    @apply flex gap-2 p-2 text-lg;
+}
+
+.desktop-nav-menu a i {
+    @apply pt-1;
 }
