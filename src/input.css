@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+@theme {
+    --font-poppins: "Poppins", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-poppins bg-slate-100;
+  }
+}
+
+* {
+    /* border: 1px solid red; */
+}
+
+header {
+    @apply flex justify-between px-4 py-2 bg-white shadow-md sticky top-0 z-50;
+}
+
+h1 {
+    @apply text-xl font-bold;
+}
+
+.header-buttons {
+    @apply flex gap-4 items-center text-lg;
+}
+
+.header-buttons button {
+    @apply cursor-pointer;
+}
+
+.mobile-menu {
+    @apply w-2/4 fixed right-0 top-0 h-full z-50 flex flex-col gap-5 bg-white shadow-xl p-2;
+}
+
+.mobile-nav-header {
+    @apply flex justify-between text-lg;
+}
+
+.mobile-nav-links {
+    @apply flex flex-col gap-2;
+}
