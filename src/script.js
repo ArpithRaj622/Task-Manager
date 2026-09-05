@@ -4,6 +4,10 @@ const mobileMenuCloseBtn = document.querySelector("#mobileMenuCloseBtn");
 const mobileMenuLinks = document.querySelectorAll(".mobile-nav-links a");
 const mobileMenuBackdrop = document.querySelector(".mobile-menu-backdrop");
 const body = document.body;
+const addTaskBtn = document.querySelector(".add-task button");
+const addTaskModal = document.querySelector(".add-task-modal");
+const closeTaskModalBtn = document.querySelector(".form-close-btn");
+const taskModalCancelBtn = document.querySelector("#taskCancel");
 
 // mobile menu open function
 function openMobileMenu() {
@@ -21,6 +25,14 @@ function closeMobileMenu() {
     body.classList.remove("overflow-hidden");
 }
 
+function openTaskModal() {
+    addTaskModal.classList.remove("hidden");
+}
+
+function closeTaskModal() {
+    addTaskModal.classList.add("hidden");
+}
+
 // mobile menu open event listner
 mobileMenuOpenBtn.addEventListener("click", openMobileMenu);
 
@@ -34,3 +46,9 @@ mobileMenuLinks.forEach((link) => {
 
 // backdrop click close mobile menu
 mobileMenuBackdrop.addEventListener("click", closeMobileMenu);
+
+addTaskBtn.addEventListener("click", openTaskModal);
+
+closeTaskModalBtn.addEventListener("click", closeTaskModal);
+
+taskModalCancelBtn.addEventListener("click", closeTaskModal);

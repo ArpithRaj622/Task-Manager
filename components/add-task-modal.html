@@ -1,0 +1,48 @@
+<div class="add-task-modal">
+    <div class="header">
+        <p>Add Task</p>
+        <button>
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <form action="">
+        <div>
+            <label for="task-title">Task Title:</label> <input type="text" id="task-title" name="taskTitle" placeholder="Enter task title">
+        </div>
+        <div>
+            <label for="task-description">Description:</label> <textarea name="taskDescription" id="task-description" placeholder="Description..."></textarea>
+        </div>
+        <div>
+            <label for="category">Select Category:</label> <select name="category" id="category">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="study">Study</option>
+            </select>
+        </div>
+        <div>
+            <label for="priority">Priority:</label> <select name="priority" id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+        <div>
+            <label for="due-date">Due date:</label> <input type="date" name="dueDate" id="due-date">
+        </div>
+        <div>
+            <label for="status">Status:</label> <select name="status" id="status">
+                <option value="pending">Pending</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">
+                Add Task
+            </button>
+            <button type="button">
+                Cancel
+            </button>
+        </div>
+    </form>
+</div>
