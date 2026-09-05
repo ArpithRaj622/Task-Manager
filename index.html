@@ -73,40 +73,71 @@
 
     <!-- main content -->
     <main class="main-content">
-        <div class="dashboard-heading">
-            <h2>Dashboard</h2>
-            <p>Manage your tasks and stay organized</p>
-        </div>
+        <div class="dashboard-content">
+            <!-- dashboard heading -->
+            <div class="dashboard-heading">
+                <h2>Dashboard</h2>
+                <p>Manage your tasks and stay organized</p>
+            </div>
 
-        <!-- summary cards -->
-        <div class="summary-cards-container">
-            <div class="summary-card"> 
-                <div class="card-icon-label">
-                    <i class="fa-solid fa-list-check"></i>
-                    <p class="card-label">Total Tasks</p>
+            <!-- summary cards -->
+            <div class="summary-cards-container">
+                <div class="summary-card"> 
+                    <div class="card-icon-label">
+                        <i class="fa-solid fa-list-check"></i>
+                        <p class="card-label">Total Tasks</p>
+                    </div>
+                    <p class="card-value">12</p>
                 </div>
-                <p class="card-value">12</p>
+                <div class="summary-card">
+                    <div class="card-icon-label">
+                        <i class="fa-solid fa-clock"></i>
+                        <p class="card-label">Pending</p>
+                    </div>
+                    <p class="card-value">4</p>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon-label">
+                        <i class="fa-solid fa-spinner"></i>
+                        <p class="card-label">In Progress</p>
+                    </div>
+                    <p class="card-value">3</p>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon-label">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <p class="card-label">Completed</p>
+                    </div>
+                    <p class="card-value">5</p>
+                </div>
             </div>
-            <div class="summary-card">
-                <div class="card-icon-label">
-                    <i class="fa-solid fa-clock"></i>
-                    <p class="card-label">Pending</p>
+
+            <!-- recent tasks -->
+            <div class="recent-tasks">
+                <h3>Recent Tasks</h3>
+                <div class="recent-task-card">
+                    <div class="card-title-status">
+                        <p class="title">Complete portfolio website</p>
+                        <p class="status bg-green-600">Completed</p>
+                    </div>
+                    <p class="due-date">Due: Sep 10</p>
                 </div>
-                <p class="card-value">4</p>
-            </div>
-            <div class="summary-card">
-                <div class="card-icon-label">
-                    <i class="fa-solid fa-spinner"></i>
-                    <p class="card-label">In Progress</p>
+
+                <div class="recent-task-card">
+                    <div class="card-title-status">
+                        <p class="title">Get Rich</p>
+                        <p class="status bg-amber-500">In Progress</p>
+                    </div>
+                    <p class="due-date">Due: Sep 10</p>
                 </div>
-                <p class="card-value">3</p>
-            </div>
-            <div class="summary-card">
-                <div class="card-icon-label">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <p class="card-label">Completed</p>
+
+                <div class="recent-task-card">
+                    <div class="card-title-status">
+                        <p class="title">Live in luxury</p>
+                        <p class="status bg-red-500">Pending</p>
+                    </div>
+                    <p class="due-date">Due: Sep 10</p>
                 </div>
-                <p class="card-value">5</p>
             </div>
         </div>
     </main>

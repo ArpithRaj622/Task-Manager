@@ -68,7 +68,11 @@ aside {
 
 /* main content */
 .main-content {
-    @apply p-8 lg:ml-52;
+    @apply p-4 md:p-8 lg:ml-52;
+}
+
+.dashboard-content {
+    @apply container max-w-7xl mx-auto;
 }
 
 .dashboard-heading {
@@ -106,4 +110,33 @@ aside {
 
 .summary-card .card-value {
     @apply text-lg font-bold;
+}
+
+/* recent tasks */
+.recent-tasks {
+    @apply my-6;
+}
+
+.recent-tasks h3 {
+    @apply text-center text-lg font-bold;
+}
+
+.recent-task-card {
+    @apply bg-white p-4 rounded-lg shadow-md my-3;
+}
+
+.card-title-status {
+    @apply flex justify-between;
+}
+
+.card-title-status .title {
+    @apply text-sm font-medium;
+}
+
+.card-title-status .status {
+    @apply text-xs px-2 py-1 text-white rounded-2xl w-24 text-center;
+}
+
+.recent-task-card .due-date {
+    @apply text-sm mt-2;
 }
