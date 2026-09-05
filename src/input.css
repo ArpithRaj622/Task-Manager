@@ -31,6 +31,7 @@ h1 {
     @apply cursor-pointer;
 }
 
+/* backdrop */
 .mobile-menu-backdrop {
     @apply fixed inset-0 bg-black/40 z-40 transition-opacity duration-300 ease-in-out;
 }
@@ -50,7 +51,7 @@ h1 {
 
 /* side nav desktop */
 aside {
-    @apply md:w-44 lg:w-52 fixed left-0 top-14 h-full bg-white p-5 shadow-xl hidden md:block;
+    @apply w-52 fixed left-0 top-14 h-full bg-white p-5 shadow-xl hidden lg:block;
 }
 
 .desktop-nav-menu {
@@ -63,4 +64,46 @@ aside {
 
 .desktop-nav-menu a i {
     @apply pt-1;
+}
+
+/* main content */
+.main-content {
+    @apply p-8 lg:ml-52;
+}
+
+.dashboard-heading {
+    @apply text-center my-6;
+}
+
+.dashboard-heading h2 {
+    @apply text-xl font-bold;
+}
+
+.dashboard-heading p {
+    @apply text-sm font-light;
+}
+
+/* summary cards */
+.summary-cards-container {
+    @apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4;
+}
+
+.summary-card {
+    @apply bg-white p-5 rounded-lg shadow-md flex justify-between;
+}
+
+.card-icon-label {
+    @apply flex gap-2;
+}
+
+.card-icon-label i {
+    @apply pt-1;
+}
+
+.card-icon-label .card-label {
+    @apply font-extralight;
+}
+
+.summary-card .card-value {
+    @apply text-lg font-bold;
 }

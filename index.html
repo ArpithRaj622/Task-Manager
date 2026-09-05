@@ -27,7 +27,7 @@
             </button>
 
             <!-- mobile menu -->
-            <button aria-label="Open menu" class="md:hidden" id="mobileMenuOpenBtn">
+            <button aria-label="Open menu" class="lg:hidden" id="mobileMenuOpenBtn">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
@@ -71,6 +71,45 @@
         </div>
     </aside>
 
+    <!-- main content -->
+    <main class="main-content">
+        <div class="dashboard-heading">
+            <h2>Dashboard</h2>
+            <p>Manage your tasks and stay organized</p>
+        </div>
+
+        <!-- summary cards -->
+        <div class="summary-cards-container">
+            <div class="summary-card"> 
+                <div class="card-icon-label">
+                    <i class="fa-solid fa-list-check"></i>
+                    <p class="card-label">Total Tasks</p>
+                </div>
+                <p class="card-value">12</p>
+            </div>
+            <div class="summary-card">
+                <div class="card-icon-label">
+                    <i class="fa-solid fa-clock"></i>
+                    <p class="card-label">Pending</p>
+                </div>
+                <p class="card-value">4</p>
+            </div>
+            <div class="summary-card">
+                <div class="card-icon-label">
+                    <i class="fa-solid fa-spinner"></i>
+                    <p class="card-label">In Progress</p>
+                </div>
+                <p class="card-value">3</p>
+            </div>
+            <div class="summary-card">
+                <div class="card-icon-label">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <p class="card-label">Completed</p>
+                </div>
+                <p class="card-value">5</p>
+            </div>
+        </div>
+    </main>
 
     <script src="./src/script.js" defer></script>
 </body>
