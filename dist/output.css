@@ -8,10 +8,14 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-300: oklch(80.8% 0.114 19.571);
     --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-red-700: oklch(50.5% 0.213 27.518);
     --color-amber-500: oklch(76.9% 0.188 70.08);
+    --color-amber-600: oklch(66.6% 0.179 58.318);
     --color-green-600: oklch(62.7% 0.194 149.214);
+    --color-blue-600: oklch(54.6% 0.245 262.881);
+    --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-slate-100: oklch(96.8% 0.007 247.896);
     --color-slate-800: oklch(27.9% 0.041 260.031);
     --color-black: #000;
@@ -215,14 +219,35 @@
   .bg-amber-500 {
     background-color: var(--color-amber-500);
   }
+  .bg-amber-600 {
+    background-color: var(--color-amber-600);
+  }
   .bg-green-600 {
     background-color: var(--color-green-600);
   }
-  .bg-red-300 {
-    background-color: var(--color-red-300);
-  }
   .bg-red-500 {
     background-color: var(--color-red-500);
+  }
+  .bg-red-600 {
+    background-color: var(--color-red-600);
+  }
+  .text-amber-500 {
+    color: var(--color-amber-500);
+  }
+  .text-blue-700 {
+    color: var(--color-blue-700);
+  }
+  .text-green-600 {
+    color: var(--color-green-600);
+  }
+  .text-red-500 {
+    color: var(--color-red-500);
+  }
+  .text-red-600 {
+    color: var(--color-red-600);
+  }
+  .text-red-700 {
+    color: var(--color-red-700);
   }
   .underline {
     text-decoration-line: underline;
@@ -364,6 +389,63 @@ aside {
   }
   @media (width >= 64rem) {
     margin-left: calc(var(--spacing) * 52);
+  }
+}
+.add-task {
+  width: 100%;
+  @media (width >= 40rem) {
+    max-width: 40rem;
+  }
+  @media (width >= 48rem) {
+    max-width: 48rem;
+  }
+  @media (width >= 64rem) {
+    max-width: 64rem;
+  }
+  @media (width >= 80rem) {
+    max-width: 80rem;
+  }
+  @media (width >= 96rem) {
+    max-width: 96rem;
+  }
+  margin-inline: auto;
+  margin-bottom: calc(var(--spacing) * 8);
+  max-width: var(--container-7xl);
+  @media (width >= 48rem) {
+    text-align: right;
+  }
+}
+.add-task button {
+  width: 100%;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-blue-700);
+  padding: calc(var(--spacing) * 2);
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  &:hover {
+    @media (hover: hover) {
+      --tw-translate-y: calc(var(--spacing) * -1);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-blue-600);
+    }
+  }
+  @media (width >= 48rem) {
+    width: calc(var(--spacing) * 40);
   }
 }
 .dashboard-content {
