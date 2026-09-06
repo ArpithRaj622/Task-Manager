@@ -135,6 +135,10 @@
                         <option value="completed">Completed</option>
                     </select>
                 </div>
+                <!-- form error message -->
+                <div>
+                    <p class="form-error hidden">Please fill in all required fields.</p>
+                </div>
                 <!-- buttons -->
                 <div class="form-action-btns">
                     <button type="submit" class="bg-blue-700 hover:bg-blue-600">
@@ -187,32 +191,17 @@
                 </div>
             </div>
 
-            <!-- recent tasks -->
-            <div class="recent-tasks">
-                <h3>Recent Tasks</h3>
-                <div class="recent-task-card">
+            <!-- my tasks -->
+            <div class="my-tasks">
+                <h3>My Tasks</h3>
+                <div class="task-card">
                     <div class="card-title-status">
                         <p class="title">Complete portfolio website</p>
                         <p class="status bg-green-600">Completed</p>
                     </div>
                     <p class="due-date">Due: Sep 10</p>
                 </div>
-
-                <div class="recent-task-card">
-                    <div class="card-title-status">
-                        <p class="title">Get Rich</p>
-                        <p class="status bg-amber-500">In Progress</p>
-                    </div>
-                    <p class="due-date">Due: Sep 10</p>
-                </div>
-
-                <div class="recent-task-card">
-                    <div class="card-title-status">
-                        <p class="title">Live in luxury</p>
-                        <p class="status bg-red-600">Pending</p>
-                    </div>
-                    <p class="due-date">Due: Sep 10</p>
-                </div>
+                <a href="#">View All Tasks</a>
             </div>
         </div>
     </main>

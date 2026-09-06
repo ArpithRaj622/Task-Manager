@@ -3,6 +3,7 @@ const mobileMenuOpenBtn = document.querySelector("#mobileMenuOpenBtn");
 const mobileMenuCloseBtn = document.querySelector("#mobileMenuCloseBtn");
 const mobileMenuLinks = document.querySelectorAll(".mobile-nav-links a");
 const mobileMenuBackdrop = document.querySelector(".mobile-menu-backdrop");
+
 const body = document.body;
 
 const addTaskBtn = document.querySelector(".add-task button");
@@ -10,6 +11,7 @@ const addTaskModal = document.querySelector(".add-task-modal");
 const closeTaskModalBtn = document.querySelector(".form-close-btn");
 const taskModalCancelBtn = document.querySelector("#taskCancel");
 const addTaskForm = document.querySelector(".add-task-modal form");
+const formErrorMsg = document.querySelector(".form-error");
 
 const taskTitle = document.querySelector("#task-title");
 const taskDescription = document.querySelector("#task-description");
@@ -44,6 +46,7 @@ function openTaskModal() {
 
 function closeTaskModal() {
     addTaskModal.classList.add("hidden");
+    formErrorMsg.classList.add("hidden");
 }
 
 // mobile menu open event listner
@@ -73,8 +76,10 @@ taskModalCancelBtn.addEventListener("click", closeTaskModal);
 addTaskForm.addEventListener("submit", (event) => {
     event.preventDefault();
     if (taskTitle.value.trim() === "" || taskDescription.value.trim() === "" || dueDate.value === "" ) {
+        formErrorMsg.classList.remove("hidden");
         return;
     }
+    formErrorMsg.classList.add("hidden");
     const taskDetails = {
         title : taskTitle.value,
         description : taskDescription.value,
