@@ -4,10 +4,23 @@ const mobileMenuCloseBtn = document.querySelector("#mobileMenuCloseBtn");
 const mobileMenuLinks = document.querySelectorAll(".mobile-nav-links a");
 const mobileMenuBackdrop = document.querySelector(".mobile-menu-backdrop");
 const body = document.body;
+
 const addTaskBtn = document.querySelector(".add-task button");
 const addTaskModal = document.querySelector(".add-task-modal");
 const closeTaskModalBtn = document.querySelector(".form-close-btn");
 const taskModalCancelBtn = document.querySelector("#taskCancel");
+const addTaskForm = document.querySelector(".add-task-modal form");
+
+const taskTitle = document.querySelector("#task-title");
+const taskDescription = document.querySelector("#task-description");
+const category = document.querySelector("#category");
+const priority = document.querySelector("#priority");
+const dueDate = document.querySelector("#due-date");
+const taskStatus = document.querySelector("#task-status");
+
+const myTasksString = localStorage.getItem("myTasks");
+const myTasks = JSON.parse(myTasksString);
+const tasksArray = myTasks ? myTasks : [];
 
 // mobile menu open function
 function openMobileMenu() {
@@ -47,8 +60,30 @@ mobileMenuLinks.forEach((link) => {
 // backdrop click close mobile menu
 mobileMenuBackdrop.addEventListener("click", closeMobileMenu);
 
+// open add task form
 addTaskBtn.addEventListener("click", openTaskModal);
 
+// close add task form
 closeTaskModalBtn.addEventListener("click", closeTaskModal);
 
+// add task form cancel button
 taskModalCancelBtn.addEventListener("click", closeTaskModal);
+
+// add task form submit button
+addTaskForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (taskTitle.value.trim() === "" || taskDescription.value.trim() === "" || dueDate.value === "" ) {
+        return;
+    }
+    const taskDetails = {
+        title : taskTitle.value,
+        description : taskDescription.value,
+        category : category.value,
+        priority : priority.value,
+        dueDate : dueDate.value,
+        taskStatus : taskStatus.value
+    }
+    tasksArray.push(taskDetails);
+    const tasksArrayString = JSON.stringify(tasksArray);
+    localStorage.setItem("myTasks", tasksArrayString);
+});

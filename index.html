@@ -41,7 +41,7 @@
     <nav class="mobile-menu translate-x-full">
         <div class="mobile-nav-header">
             <p>Menu</p>
-            <button aria-label="Close mobile menu" id="mobileMenuCloseBtn">
+            <button aria-label="Close mobile menu" id="mobileMenuCloseBtn" class="hover:text-red-600 cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
@@ -83,43 +83,59 @@
 
         <!-- add task modal -->
         <div class="add-task-modal hidden">
+            <!-- form header -->
             <div class="header">
                 <p>Add Task</p>
                 <button class="form-close-btn">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
+
+            <!-- form -->
             <form action="">
+                <!-- title -->
                 <div>
-                    <label for="task-title">Task Title:</label> <input type="text" id="task-title" name="taskTitle" placeholder="Enter task title">
+                    <label for="task-title">Task Title:</label>
+                    <input type="text" id="task-title" name="taskTitle" placeholder="Enter task title">
                 </div>
+                <!-- description -->
                 <div>
-                    <label for="task-description">Description:</label> <textarea name="taskDescription" id="task-description" placeholder="Description..."></textarea>
+                    <label for="task-description">Description:</label>
+                    <textarea name="taskDescription" id="task-description" placeholder="Description..."></textarea>
                 </div>
+                <!-- category -->
                 <div>
-                    <label for="category">Select Category:</label> <select name="category" id="category">
+                    <label for="category">Select Category:</label>
+                    <select name="category" id="category">
                         <option value="work">Work</option>
                         <option value="personal">Personal</option>
                         <option value="study">Study</option>
                     </select>
                 </div>
+                <!-- priority -->
                 <div>
-                    <label for="priority">Priority:</label> <select name="priority" id="priority">
+                    <label for="priority">Priority:</label>
+                    <select name="priority" id="priority">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
                     </select>
                 </div>
+                <!-- due date -->
                 <div>
-                    <label for="due-date">Due date:</label> <input type="date" name="dueDate" id="due-date">
+                    <label for="due-date">Due date:</label> 
+                    <input type="date" name="dueDate" id="due-date">
                 </div>
+                <!-- status -->
                 <div>
-                    <label for="status">Status:</label> <select name="status" id="status">
+                    <label for="status">Status:</label>
+                    <select name="taskStatus" id="task-status">
                         <option value="pending">Pending</option>
                         <option value="in-progress">In Progress</option>
                         <option value="completed">Completed</option>
                     </select>
                 </div>
+                <!-- buttons -->
                 <div class="form-action-btns">
                     <button type="submit" class="bg-blue-700 hover:bg-blue-600">
                         Add Task
@@ -131,6 +147,7 @@
             </form>
         </div>
 
+        <!-- dashboard -->
         <div class="dashboard-content">
             <!-- dashboard heading -->
             <div class="dashboard-heading">
