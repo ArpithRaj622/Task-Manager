@@ -151,16 +151,16 @@ aside {
     @apply bg-white p-5 rounded-lg shadow-md flex justify-between;
 }
 
-.card-icon-label {
+.summary-card .card-icon-label {
     @apply flex gap-2;
 }
 
-.card-icon-label i {
+.summary-card .card-icon-label i {
     @apply pt-1;
 }
 
-.card-icon-label .card-label {
-    @apply font-extralight;
+.summary-card .card-icon-label .card-label {
+    @apply font-medium;
 }
 
 .summary-card .card-value {
@@ -193,7 +193,7 @@ aside {
 }
 
 .task-card .due-date {
-    @apply text-sm mt-2;
+    @apply text-sm mt-2 text-slate-400;
 }
 
 .my-tasks a {

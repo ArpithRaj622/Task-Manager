@@ -10,6 +10,7 @@
       "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-amber-400: oklch(82.8% 0.189 84.429);
     --color-amber-500: oklch(76.9% 0.188 70.08);
     --color-green-600: oklch(62.7% 0.194 149.214);
     --color-blue-500: oklch(62.3% 0.214 259.815);
@@ -33,7 +34,6 @@
     --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
-    --font-weight-extralight: 200;
     --font-weight-light: 300;
     --font-weight-medium: 500;
     --font-weight-bold: 700;
@@ -200,6 +200,24 @@
   .pointer-events-none {
     pointer-events: none;
   }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
   .hidden {
     display: none;
   }
@@ -212,6 +230,9 @@
   }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .bg-amber-400 {
+    background-color: var(--color-amber-400);
   }
   .bg-blue-700 {
     background-color: var(--color-blue-700);
@@ -613,16 +634,16 @@ aside {
   --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
-.card-icon-label {
+.summary-card .card-icon-label {
   display: flex;
   gap: calc(var(--spacing) * 2);
 }
-.card-icon-label i {
+.summary-card .card-icon-label i {
   padding-top: var(--spacing);
 }
-.card-icon-label .card-label {
-  --tw-font-weight: var(--font-weight-extralight);
-  font-weight: var(--font-weight-extralight);
+.summary-card .card-icon-label .card-label {
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
 }
 .summary-card .card-value {
   font-size: var(--text-lg);
@@ -672,6 +693,7 @@ aside {
   margin-top: calc(var(--spacing) * 2);
   font-size: var(--text-sm);
   line-height: var(--tw-leading, var(--text-sm--line-height));
+  color: var(--color-slate-400);
 }
 .my-tasks a {
   margin-block: calc(var(--spacing) * 2);

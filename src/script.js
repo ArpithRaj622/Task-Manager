@@ -24,6 +24,8 @@ const myTasksString = localStorage.getItem("myTasks");
 const myTasks = JSON.parse(myTasksString);
 const tasksArray = myTasks ? myTasks : [];
 
+const tasksContainer = document.querySelector(".tasks-container");
+
 // mobile menu open function
 function openMobileMenu() {
     mobileMenu.classList.remove("translate-x-full");
@@ -40,14 +42,77 @@ function closeMobileMenu() {
     body.classList.remove("overflow-hidden");
 }
 
+// open task form
 function openTaskModal() {
     addTaskModal.classList.remove("hidden");
 }
 
+// close task form
 function closeTaskModal() {
     addTaskModal.classList.add("hidden");
     formErrorMsg.classList.add("hidden");
 }
+
+function createTaskCard(task) {
+    // entire card
+    const taskCard = document.createElement("div");
+    taskCard.classList.add("task-card");
+
+    // card title and status container
+    const taskTitleStatus = document.createElement("div");
+    taskTitleStatus.classList.add("card-title-status");
+
+    // card title
+    const cardTitle = document.createElement("p");
+    cardTitle.classList.add("title");
+    cardTitle.textContent = task.title;
+
+    // card status
+    const cardStatus = document.createElement("p");
+    cardStatus.classList.add("status");
+    if (task.taskStatus === "pending") {
+        cardStatus.textContent = "Pending";
+        cardStatus.classList.add("bg-red-600");
+
+    } else if (task.taskStatus === "in-progress") {
+        cardStatus.textContent = "In Progress";
+        cardStatus.classList.add("bg-amber-400");
+
+    } else if (task.taskStatus === "completed") {
+        cardStatus.textContent = "Completed";
+        cardStatus.classList.add("bg-green-600");
+    }
+
+    // due date
+    const cardDueDate = document.createElement("p");
+    cardDueDate.classList.add("due-date");
+    const date = new Date(task.dueDate);
+    cardDueDate.textContent = `Due: ${date.toLocaleDateString("en-US", {
+        month : "short",
+        day : "numeric",
+        year : "numeric"
+    })}`;
+
+    // append
+    taskTitleStatus.append(cardTitle, cardStatus);
+    taskCard.append(taskTitleStatus, cardDueDate);
+
+    return taskCard;
+    // tasksContainer.append(taskCard);
+}
+
+// render tasks
+function renderTasks() {
+    tasksContainer.innerHTML = "";
+    const latestTasks = tasksArray.slice(-4).reverse();
+
+    latestTasks.forEach((task) => {
+        const taskCard = createTaskCard(task);
+        tasksContainer.append(taskCard);
+    });
+}
+
+renderTasks();
 
 // mobile menu open event listner
 mobileMenuOpenBtn.addEventListener("click", openMobileMenu);
@@ -91,4 +156,5 @@ addTaskForm.addEventListener("submit", (event) => {
     tasksArray.push(taskDetails);
     const tasksArrayString = JSON.stringify(tasksArray);
     localStorage.setItem("myTasks", tasksArrayString);
+    addTaskForm.reset();
 });
