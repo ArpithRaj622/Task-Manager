@@ -148,7 +148,7 @@ aside {
 }
 
 .summary-card {
-    @apply bg-white p-5 rounded-lg shadow-md flex justify-between;
+    @apply bg-white p-5 rounded-lg shadow-md flex justify-between cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out;
 }
 
 .summary-card .card-icon-label {

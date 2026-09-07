@@ -49,40 +49,35 @@ const saveEditBtn = document.querySelector("#editSave");
 const cancelEditBtn = document.querySelector("#editCancel");
 const editTaskFormError = document.querySelector(".edit-form-error");
 
+// summary card for clicking
+// total tasks card
+const totalTasksCard = document.querySelector("#totalTasksCard");
+totalTasksCard.addEventListener("click", () => {
+    window.location.href = "components/tasks.html";
+});
+
+// pending tasks card
+const pendingTasksCard = document.querySelector("#pendingTasksCard");
+pendingTasksCard.addEventListener("click", () => {
+    window.location.href = "components/tasks.html";
+});
+
+// in-progress tasks card
+const inProgressTasksCard = document.querySelector("#inProgressTasksCard");
+inProgressTasksCard.addEventListener("click", () => {
+    window.location.href = "components/tasks.html";
+});
+
+// completed tasks card
+const completedTasksCard = document.querySelector("#completedTasksCard");
+completedTasksCard.addEventListener("click", () => {
+    window.location.href = "components/tasks.html";
+});
+
 // get data from local storage
 const myTasksString = localStorage.getItem("myTasks");
 const myTasks = JSON.parse(myTasksString);
 const tasksArray = myTasks ? myTasks : [];
-renderSummaryCards();
-
-console.log(tasksArray);
-
-// summary cards
-function renderSummaryCards() {
-    // total tasks
-    const totalTasksCount = document.querySelector("#totalTasksCount");
-    totalTasksCount.textContent = tasksArray.length;
-
-    // pending tasks
-    const pendingTasksCount = document.querySelector("#pendingTasksCount");
-    const pendingTasks = tasksArray.filter((task) => {
-        return task.taskStatus === "pending";
-    });
-    pendingTasksCount.textContent = pendingTasks.length;
-
-    // in-progress tasks
-    const inProgressTasksCount = document.querySelector("#inProgressTasksCount");
-    const inProgressTasks = tasksArray.filter((task) => {
-        return task.taskStatus === "in-progress";
-    });
-    inProgressTasksCount.textContent = inProgressTasks.length;
-
-    const completedTasksCount = document.querySelector("#completedTasksCount");
-    const completedTasks = tasksArray.filter((task) => {
-        return task.taskStatus === "completed";
-    });
-    completedTasksCount.textContent = completedTasks.length;
-}
 
 // mobile menu open function
 function openMobileMenu() {
@@ -195,7 +190,35 @@ function renderTasks() {
     });
 }
 
+// render summary cards
+function renderSummaryCards() {
+    // total tasks
+    const totalTasksCount = document.querySelector("#totalTasksCount");
+    totalTasksCount.textContent = tasksArray.length;
+
+    // pending tasks
+    const pendingTasksCount = document.querySelector("#pendingTasksCount");
+    const pendingTasks = tasksArray.filter((task) => {
+        return task.taskStatus === "pending";
+    });
+    pendingTasksCount.textContent = pendingTasks.length;
+
+    // in-progress tasks
+    const inProgressTasksCount = document.querySelector("#inProgressTasksCount");
+    const inProgressTasks = tasksArray.filter((task) => {
+        return task.taskStatus === "in-progress";
+    });
+    inProgressTasksCount.textContent = inProgressTasks.length;
+
+    const completedTasksCount = document.querySelector("#completedTasksCount");
+    const completedTasks = tasksArray.filter((task) => {
+        return task.taskStatus === "completed";
+    });
+    completedTasksCount.textContent = completedTasks.length;
+}
+
 renderTasks();
+renderSummaryCards();
 
 // mobile menu open event listner
 mobileMenuOpenBtn.addEventListener("click", openMobileMenu);
