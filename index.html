@@ -195,16 +195,115 @@
             <div class="my-tasks">
                 <h3>My Tasks</h3>
                 <div class="tasks-container">
-                    <!-- <div class="task-card">
-                        <div class="card-title-status">
-                            <p class="title">Complete portfolio website</p>
-                            <p class="status bg-green-600">Completed</p>
-                        </div>
-                        <p class="due-date">Due: Sep 10</p>
-                    </div> -->
                 </div>
                 <a href="#">View All Tasks</a>
             </div>
+        </div>
+
+        <!-- task details modal -->
+        <div class="task-details-modal hidden">
+            <!-- close modal -->
+            <div class="text-right">
+                <button aria-label="Close task details" id="taskDetailsCloseBtn" class="hover:text-red-600 cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+            </button>
+            </div>
+            <!-- task details -->
+            <div class="task-details">
+                <div>
+                    <p class="title"></p>
+                    <p class="description"></p>
+                </div>
+                <p class="category"></p>
+                <p class="priority"></p>
+                <p class="due-date"></p>
+                <p class="status"></p>
+            </div>
+            <!-- buttons -->
+            <div class="task-details-btns">
+                <button aria-label="Edit task button" id="editTaskBtn">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Edit
+                </button>
+                <button aria-label="Delete task button" id="deleteTaskBtn">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+
+        <!-- edit task modal -->
+        <div class="edit-task-modal hidden">
+            <!-- header -->
+            <div class="header">
+                <p>Edit Task</p>
+                <button class="form-close-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- form -->
+            <form action="">
+                <!-- title -->
+                <div>
+                    <label for="edit-task-title">Task Title:</label>
+                    <input type="text" id="edit-task-title" name="taskTitle" placeholder="Enter task title">
+                </div>
+                <!-- description -->
+                <div>
+                    <label for="edit-task-description">Description:</label>
+                    <textarea name="taskDescription" id="edit-task-description" placeholder="Description..."></textarea>
+                </div>
+                <!-- category -->
+                <div>
+                    <label for="edit-category">Select Category:</label>
+                    <select name="category" id="edit-category">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="study">Study</option>
+                    </select>
+                </div>
+                <!-- priority -->
+                <div>
+                    <label for="edit-priority">Priority:</label>
+                    <select name="priority" id="edit-priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <!-- due date -->
+                <div>
+                    <label for="edit-due-date">Due date:</label> 
+                    <input type="date" name="dueDate" id="edit-due-date">
+                </div>
+                <!-- status -->
+                <div>
+                    <label for="edit-task-status">Status:</label>
+                    <select name="taskStatus" id="edit-task-status">
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <!-- form error message -->
+                <div>
+                    <p class="form-error hidden">Please fill in all required fields.</p>
+                </div>
+                <!-- form error message -->
+                <div>
+                    <p class="edit-form-error hidden">Please fill in all required fields.</p>
+                </div>
+                <!-- buttons -->
+                <div class="form-action-btns">
+                    <button type="submit" class="bg-blue-700 hover:bg-blue-600" id="editSave">
+                        Save
+                    </button>
+                    <button type="button" class="bg-red-600 hover:bg-red-500" id="editCancel">
+                        Cancel
+                    </button>
+                </div>
+            </form>
         </div>
     </main>
 

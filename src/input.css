@@ -199,3 +199,76 @@ aside {
 .my-tasks a {
     @apply inline-block w-full text-center my-2 text-slate-400 hover:text-blue-500 hover:scale-105 transition-all duration-200 ease-in-out;
 }
+
+/* task details modal */
+.task-details-modal {
+    @apply bg-white shadow-md rounded-lg p-4 container max-w-4xl mx-auto;
+}
+
+.task-details-modal .task-details {
+    @apply flex flex-col gap-2;
+}
+
+.task-details-modal .task-details .title {
+    @apply font-bold text-lg;
+}
+
+.task-details-modal .task-details .description {
+    @apply text-sm font-light;
+}
+
+.task-details-modal .task-details-btns {
+    @apply flex gap-4 mt-5;
+}
+
+.task-details-modal .task-details-btns button {
+    @apply w-32 bg-red-100 p-2 flex gap-2 items-center text-lg rounded-md shadow-md hover:-translate-y-1 transition-all duration-300 ease-in-out cursor-pointer;
+}
+
+#editTaskBtn {
+    @apply bg-slate-300 text-slate-800 font-medium;
+}
+
+#deleteTaskBtn {
+    @apply bg-red-600 text-white font-medium;
+}
+
+.edit-task-modal {
+    @apply bg-white p-5 rounded-lg shadow-md container max-w-xl mx-auto;
+}
+
+.edit-task-modal .header {
+    @apply flex justify-between p-2 items-center mb-2;
+}
+
+.edit-task-modal .header p {
+    @apply text-xl font-bold;
+}
+
+.edit-task-modal .header button {
+    @apply cursor-pointer text-lg hover:text-red-600 transition-all duration-200 ease-in-out;
+}
+
+.edit-task-modal form {
+    @apply flex flex-col gap-5;
+}
+
+.edit-task-modal form div {
+    @apply flex flex-col;
+}
+
+.edit-task-modal form div label {
+    @apply font-medium;
+}
+
+.edit-task-modal form div input, textarea, select {
+    @apply bg-slate-50 p-1 border border-slate-300 rounded-md focus:outline-none cursor-pointer;
+}
+
+.edit-task-modal form .form-action-btns {
+    @apply w-full md:flex-row gap-2;
+}
+
+.edit-form-error {
+    @apply text-red-600 font-bold text-lg;
+}

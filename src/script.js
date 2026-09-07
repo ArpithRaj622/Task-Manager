@@ -26,6 +26,33 @@ const tasksArray = myTasks ? myTasks : [];
 
 const tasksContainer = document.querySelector(".tasks-container");
 
+const taskDetailsModal = document.querySelector(".task-details-modal");
+const taskDetailsCloseBtn = document.querySelector("#taskDetailsCloseBtn");
+
+const taskDetailsTitle = document.querySelector(".task-details-modal .task-details .title");
+const taskDetailsDescription = document.querySelector(".task-details-modal .task-details .description");
+const taskDetailsCategory = document.querySelector(".task-details-modal .task-details .category");
+const taskDetailsPriority = document.querySelector(".task-details-modal .task-details .priority");
+const taskDetailsDueDate = document.querySelector(".task-details-modal .task-details .due-date");
+const taskDetailsStatus = document.querySelector(".task-details-modal .task-details .status");
+
+let clickedTaskDetails;
+const editTaskBtn = document.querySelector("#editTaskBtn");
+const deleteTaskBtn = document.querySelector("#deleteTaskBtn");
+
+const editTaskModal = document.querySelector(".edit-task-modal");
+const editTaskForm = document.querySelector(".edit-task-modal form");
+const editTitle = document.querySelector("#edit-task-title");
+const editDescription = document.querySelector("#edit-task-description");
+const editCategory = document.querySelector("#edit-category");
+const editPriority = document.querySelector("#edit-priority");
+const editDueDate = document.querySelector("#edit-due-date");
+const editStatus = document.querySelector("#edit-task-status");
+const editModalCloseBtn = document.querySelector(".edit-task-modal .header .form-close-btn");
+const saveEditBtn = document.querySelector("#editSave");
+const cancelEditBtn = document.querySelector("#editCancel");
+const editTaskFormError = document.querySelector(".edit-form-error");
+
 // mobile menu open function
 function openMobileMenu() {
     mobileMenu.classList.remove("translate-x-full");
@@ -53,6 +80,7 @@ function closeTaskModal() {
     formErrorMsg.classList.add("hidden");
 }
 
+// create task card
 function createTaskCard(task) {
     // entire card
     const taskCard = document.createElement("div");
@@ -97,8 +125,31 @@ function createTaskCard(task) {
     taskTitleStatus.append(cardTitle, cardStatus);
     taskCard.append(taskTitleStatus, cardDueDate);
 
+    // to open task details modal
+    taskCard.addEventListener("click", () => {
+        editTaskModal.classList.add("hidden");
+        clickedTaskDetails = task;
+        taskDetailsModal.classList.remove("hidden");
+        taskDetailsTitle.textContent = task.title;
+        taskDetailsDescription.textContent = task.description;
+        taskDetailsCategory.textContent = `Category: ${task.category}`;
+        taskDetailsPriority.textContent = `Priority: ${task.priority}`;
+        taskDetailsDueDate.textContent = `Due: ${date.toLocaleDateString("en-US", {
+            month : "short",
+            day : "numeric",
+            year : "numeric"
+        })}`;
+        if (task.taskStatus === "pending") {
+            taskDetailsStatus.textContent = "Status: Pending";
+        } else if (task.taskStatus === "in-progress") {
+            taskDetailsStatus.textContent = "Status: In Progress";
+        } else if (task.taskStatus === "completed") {
+            taskDetailsStatus.textContent = "Status: Completed";
+        }
+         
+    });
+
     return taskCard;
-    // tasksContainer.append(taskCard);
 }
 
 // render tasks
@@ -106,6 +157,7 @@ function renderTasks() {
     tasksContainer.innerHTML = "";
     const latestTasks = tasksArray.slice(-4).reverse();
 
+    // create task cards
     latestTasks.forEach((task) => {
         const taskCard = createTaskCard(task);
         tasksContainer.append(taskCard);
@@ -157,4 +209,68 @@ addTaskForm.addEventListener("submit", (event) => {
     const tasksArrayString = JSON.stringify(tasksArray);
     localStorage.setItem("myTasks", tasksArrayString);
     addTaskForm.reset();
+
+    closeTaskModal();
+    renderTasks();
+});
+
+// close task details modal
+taskDetailsCloseBtn.addEventListener("click", () => {
+    taskDetailsModal.classList.add("hidden");
+});
+
+// edit task button
+editTaskBtn.addEventListener("click", () => {
+    taskDetailsModal.classList.add("hidden");
+    editTaskModal.classList.remove("hidden");
+
+    editTitle.value = clickedTaskDetails.title;
+    editDescription.value = clickedTaskDetails.description;
+    editCategory.value = clickedTaskDetails.category;
+    editPriority.value = clickedTaskDetails.priority;
+    editDueDate.value = clickedTaskDetails.dueDate;
+    editStatus.value = clickedTaskDetails.taskStatus;
+});
+
+// edit task form submit button
+editTaskForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (editTitle.value.trim() === "" || editDescription.value.trim() === "" || editDueDate.value === "" ) {
+        editTaskFormError.classList.remove("hidden");
+        return;
+    }
+    editTaskFormError.classList.add("hidden");
+    clickedTaskDetails.title = editTitle.value;
+    clickedTaskDetails.description = editDescription.value;
+    clickedTaskDetails.category = editCategory.value;
+    clickedTaskDetails.priority = editPriority.value;
+    clickedTaskDetails.dueDate = editDueDate.value;
+    clickedTaskDetails.taskStatus = editStatus.value;
+
+    const tasksArrayString = JSON.stringify(tasksArray);
+    localStorage.setItem("myTasks", tasksArrayString);
+    editTaskForm.reset();
+    editTaskModal.classList.add("hidden");
+    renderTasks();
+});
+
+// close edit task modal
+editModalCloseBtn.addEventListener("click", () => {
+    editTaskModal.classList.add("hidden");
+    taskDetailsModal.classList.remove("hidden");
+});
+
+// cancel edit task
+cancelEditBtn.addEventListener("click", () => {
+    editTaskModal.classList.add("hidden");
+    taskDetailsModal.classList.remove("hidden");
+});
+
+// delete task
+deleteTaskBtn.addEventListener("click", () => {
+    tasksArray.splice(tasksArray.indexOf(clickedTaskDetails), 1);
+    const tasksArrayString = JSON.stringify(tasksArray);
+    localStorage.setItem("myTasks", tasksArrayString);
+    taskDetailsModal.classList.add("hidden");
+    renderTasks();
 });
