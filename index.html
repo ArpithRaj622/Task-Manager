@@ -161,33 +161,37 @@
 
             <!-- summary cards -->
             <div class="summary-cards-container">
+                <!-- total tasks -->
                 <div class="summary-card"> 
                     <div class="card-icon-label">
                         <i class="fa-solid fa-list-check text-blue-700"></i>
                         <p class="card-label">Total Tasks</p>
                     </div>
-                    <p class="card-value">12</p>
+                    <p class="card-value" id="totalTasksCount"></p>
                 </div>
+                <!-- pending tasks -->
                 <div class="summary-card">
                     <div class="card-icon-label">
                         <i class="fa-solid fa-clock text-red-500"></i>
                         <p class="card-label">Pending</p>
                     </div>
-                    <p class="card-value">4</p>
+                    <p class="card-value" id="pendingTasksCount"></p>
                 </div>
+                <!-- in-progress tasks -->
                 <div class="summary-card">
                     <div class="card-icon-label">
                         <i class="fa-solid fa-spinner text-amber-500"></i>
                         <p class="card-label">In Progress</p>
                     </div>
-                    <p class="card-value">3</p>
+                    <p class="card-value" id="inProgressTasksCount"></p>
                 </div>
+                <!-- completed tasks -->
                 <div class="summary-card">
                     <div class="card-icon-label">
                         <i class="fa-solid fa-circle-check text-green-600"></i>
                         <p class="card-label">Completed</p>
                     </div>
-                    <p class="card-value">5</p>
+                    <p class="card-value" id="completedTasksCount"></p>
                 </div>
             </div>
 

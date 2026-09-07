@@ -20,10 +20,6 @@ const priority = document.querySelector("#priority");
 const dueDate = document.querySelector("#due-date");
 const taskStatus = document.querySelector("#task-status");
 
-const myTasksString = localStorage.getItem("myTasks");
-const myTasks = JSON.parse(myTasksString);
-const tasksArray = myTasks ? myTasks : [];
-
 const tasksContainer = document.querySelector(".tasks-container");
 
 const taskDetailsModal = document.querySelector(".task-details-modal");
@@ -52,6 +48,41 @@ const editModalCloseBtn = document.querySelector(".edit-task-modal .header .form
 const saveEditBtn = document.querySelector("#editSave");
 const cancelEditBtn = document.querySelector("#editCancel");
 const editTaskFormError = document.querySelector(".edit-form-error");
+
+// get data from local storage
+const myTasksString = localStorage.getItem("myTasks");
+const myTasks = JSON.parse(myTasksString);
+const tasksArray = myTasks ? myTasks : [];
+renderSummaryCards();
+
+console.log(tasksArray);
+
+// summary cards
+function renderSummaryCards() {
+    // total tasks
+    const totalTasksCount = document.querySelector("#totalTasksCount");
+    totalTasksCount.textContent = tasksArray.length;
+
+    // pending tasks
+    const pendingTasksCount = document.querySelector("#pendingTasksCount");
+    const pendingTasks = tasksArray.filter((task) => {
+        return task.taskStatus === "pending";
+    });
+    pendingTasksCount.textContent = pendingTasks.length;
+
+    // in-progress tasks
+    const inProgressTasksCount = document.querySelector("#inProgressTasksCount");
+    const inProgressTasks = tasksArray.filter((task) => {
+        return task.taskStatus === "in-progress";
+    });
+    inProgressTasksCount.textContent = inProgressTasks.length;
+
+    const completedTasksCount = document.querySelector("#completedTasksCount");
+    const completedTasks = tasksArray.filter((task) => {
+        return task.taskStatus === "completed";
+    });
+    completedTasksCount.textContent = completedTasks.length;
+}
 
 // mobile menu open function
 function openMobileMenu() {
@@ -212,6 +243,7 @@ addTaskForm.addEventListener("submit", (event) => {
 
     closeTaskModal();
     renderTasks();
+    renderSummaryCards();
 });
 
 // close task details modal
@@ -252,6 +284,7 @@ editTaskForm.addEventListener("submit", (event) => {
     editTaskForm.reset();
     editTaskModal.classList.add("hidden");
     renderTasks();
+    renderSummaryCards();
 });
 
 // close edit task modal
@@ -273,4 +306,5 @@ deleteTaskBtn.addEventListener("click", () => {
     localStorage.setItem("myTasks", tasksArrayString);
     taskDetailsModal.classList.add("hidden");
     renderTasks();
+    renderSummaryCards();
 });
