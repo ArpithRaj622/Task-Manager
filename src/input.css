@@ -226,7 +226,7 @@ aside {
 }
 
 #editTaskBtn {
-    @apply bg-slate-300 text-slate-800 font-medium;
+    @apply bg-slate-300 font-medium;
 }
 
 #deleteTaskBtn {
@@ -329,4 +329,18 @@ aside {
 /* task delete btn */
 #deleteTask-inTasksPage {
     @apply bg-red-600 text-white;
+}
+
+
+/* tasks-filter */
+.tasks-filter {
+    @apply flex gap-3;
+}
+
+.tasks-filter p {
+    @apply bg-slate-400 px-2 py-1 text-xs rounded-2xl text-white font-medium cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out;
+}
+
+.tasks-filter .active {
+    @apply font-semibold bg-blue-700;
 }

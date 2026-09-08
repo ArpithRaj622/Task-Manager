@@ -31,6 +31,22 @@ const myTasksString = localStorage.getItem("myTasks");
 const myTasks = JSON.parse(myTasksString);
 const tasksArray = myTasks ? myTasks : [];
 
+const urlParams = new URLSearchParams(window.location.search);
+const status = urlParams.get("status");
+
+const taskFilters = document.querySelectorAll(".tasks-filter p");
+taskFilters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+        const selectedStatus = filter.dataset.status;
+        window.location.href = `tasks.html?status=${selectedStatus}`;
+    });
+});
+
+taskFilters.forEach((filter) => {
+    if (filter.dataset.status === status) {
+        filter.classList.add("active");
+    }
+})
 
 
 // functions
@@ -159,7 +175,22 @@ function createTaskCard(task) {
 // render tasks function
 function renderTasks() {
     tasksContainer.innerHTML = "";
-    tasksArray.slice().reverse().forEach((task) => {
+
+    let tasksToRender = tasksArray;
+
+    if (status === "all") {
+        tasksToRender = tasksArray;
+    } else if (status === "pending") {
+        tasksToRender = tasksArray.filter((task) => task.taskStatus === "pending");
+    } else if (status === "in-progress") {
+        tasksToRender = tasksArray.filter((task) => task.taskStatus === "in-progress");
+    } else if (status === "completed") {
+        tasksToRender = tasksArray.filter((task) => task.taskStatus === "completed");
+    } else {
+        tasksToRender = tasksArray;
+    }
+
+    tasksToRender.slice().reverse().forEach((task) => {
         const card = createTaskCard(task);
         tasksContainer.append(card);
     });

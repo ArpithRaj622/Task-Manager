@@ -49,11 +49,19 @@ const saveEditBtn = document.querySelector("#editSave");
 const cancelEditBtn = document.querySelector("#editCancel");
 const editTaskFormError = document.querySelector(".edit-form-error");
 
+// view all tasks
+const viewAllTasks = document.querySelector("#viewAllTasks");
+
 // summary card for clicking
 // total tasks card
 const totalTasksCard = document.querySelector("#totalTasksCard");
 totalTasksCard.addEventListener("click", () => {
-    window.location.href = "components/tasks.html";
+    window.location.href = "components/tasks.html?status=all";
+});
+
+// view all tasks link
+viewAllTasks.addEventListener("click", () => {
+    window.location.href = "components/tasks.html?status=all";
 });
 
 // pending tasks card
