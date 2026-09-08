@@ -71,33 +71,80 @@
     </aside>
 
     <main class="main-content-inTasksPage">
+        <!-- edit task modal -->
+        <div class="edit-task-modal hidden">
+            <!-- header -->
+            <div class="header">
+                <p>Edit Task</p>
+                <button class="form-close-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- form -->
+            <form action="">
+                <!-- title -->
+                <div>
+                    <label for="edit-task-title">Task Title:</label>
+                    <input type="text" id="edit-task-title" name="taskTitle" placeholder="Enter task title">
+                </div>
+                <!-- description -->
+                <div>
+                    <label for="edit-task-description">Description:</label>
+                    <textarea name="taskDescription" id="edit-task-description" placeholder="Description..."></textarea>
+                </div>
+                <!-- category -->
+                <div>
+                    <label for="edit-category">Select Category:</label>
+                    <select name="category" id="edit-category">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="study">Study</option>
+                    </select>
+                </div>
+                <!-- priority -->
+                <div>
+                    <label for="edit-priority">Priority:</label>
+                    <select name="priority" id="edit-priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <!-- due date -->
+                <div>
+                    <label for="edit-due-date">Due date:</label> 
+                    <input type="date" name="dueDate" id="edit-due-date">
+                </div>
+                <!-- status -->
+                <div>
+                    <label for="edit-task-status">Status:</label>
+                    <select name="taskStatus" id="edit-task-status">
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <!-- form error message -->
+                <div>
+                    <p class="edit-form-error hidden">Please fill in all required fields.</p>
+                </div>
+                <!-- buttons -->
+                <div class="form-action-btns">
+                    <button type="submit" class="bg-blue-700 hover:bg-blue-600" id="editSave">
+                        Save
+                    </button>
+                    <button type="button" class="bg-red-600 hover:bg-red-500" id="editCancel">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
         <!-- tasks container -->
         <div class="tasks-container-inTasksPage">
             <!-- task card -->
-            <div class="task-card-inTasksPage">
-                <!-- task details -->
-                <div class="task-details-inTasksPage">
-                    <div>
-                        <p class="task-title--inTasksPage">Title</p>
-                        <p class="task-description-inTasksPage">description</p>
-                    </div>
-                    <p class="task-category-inTasksPage">category</p>
-                    <p class="task-priority-inTasksPage">priority</p>
-                    <p class="task-due-date-inTasksPage">due date</p>
-                    <p class="task-status-inTasksPage">status</p>
-                </div>
-                <!-- buttons -->
-                <div class="task-btns-inTasksPage">
-                    <button aria-label="Task edit button" id="editTask-inTasksPage">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        Edit
-                    </button>
-                    <button aria-label="Task delete button" id="deleteTask-inTasksPage">
-                        <i class="fa-solid fa-trash-can"></i>
-                        Delete
-                    </button>
-                </div>
-            </div>
         </div>
     </main>
 

@@ -283,27 +283,32 @@ aside {
 
 /* task-container */
 .tasks-container-inTasksPage {
-    @apply bg-white p-5 rounded-lg shadow-md;
+    @apply flex flex-col gap-6 container mx-auto my-5;   
 }
 
 /* task card */
 .task-card-inTasksPage {
-    @apply flex flex-col gap-5 md:flex-row md:justify-between;
+    @apply flex flex-col gap-5 md:flex-row md:justify-between bg-white p-5 rounded-lg shadow-md;
 }
 
 /* task details */
 .task-details-inTasksPage {
-    @apply flex flex-col gap-1;
+    @apply flex flex-col gap-2;
 }
 
 /* task title */
-.task-title--inTasksPage {
+.task-title-inTasksPage {
     @apply font-bold text-lg;
 }
 
 /* task description */
 .task-description-inTasksPage {
     @apply text-slate-600;
+}
+
+/* task status */
+.task-status-inTasksPage {
+    @apply w-28 text-sm p-0.5 text-center rounded-2xl text-white font-medium
 }
 
 /* task buttons container */
