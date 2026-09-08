@@ -272,3 +272,56 @@ aside {
 .edit-form-error {
     @apply text-red-600 font-bold text-lg;
 }
+
+
+
+/* style for tasks.html page*/
+/* main content */
+.main-content-inTasksPage {
+    @apply p-4 md:p-8 lg:ml-52;
+}
+
+/* task-container */
+.tasks-container-inTasksPage {
+    @apply bg-white p-5 rounded-lg shadow-md;
+}
+
+/* task card */
+.task-card-inTasksPage {
+    @apply flex flex-col gap-5 md:flex-row md:justify-between;
+}
+
+/* task details */
+.task-details-inTasksPage {
+    @apply flex flex-col gap-1;
+}
+
+/* task title */
+.task-title--inTasksPage {
+    @apply font-bold text-lg;
+}
+
+/* task description */
+.task-description-inTasksPage {
+    @apply text-slate-600;
+}
+
+/* task buttons container */
+.task-btns-inTasksPage {
+    @apply flex flex-col gap-3 md:w-32;
+}
+
+/* task buttons */
+.task-btns-inTasksPage button {
+    @apply p-1 w-full md:w-32 font-medium rounded-md shadow-sm cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out;
+}
+
+/* task edit btn */
+#editTask-inTasksPage {
+    @apply bg-slate-300;
+}
+
+/* task delete btn */
+#deleteTask-inTasksPage {
+    @apply bg-red-600 text-white;
+}

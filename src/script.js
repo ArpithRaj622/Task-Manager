@@ -59,19 +59,19 @@ totalTasksCard.addEventListener("click", () => {
 // pending tasks card
 const pendingTasksCard = document.querySelector("#pendingTasksCard");
 pendingTasksCard.addEventListener("click", () => {
-    window.location.href = "components/tasks.html";
+    window.location.href = "components/tasks.html?status=pending";
 });
 
 // in-progress tasks card
 const inProgressTasksCard = document.querySelector("#inProgressTasksCard");
 inProgressTasksCard.addEventListener("click", () => {
-    window.location.href = "components/tasks.html";
+    window.location.href = "components/tasks.html?status=in-progress";
 });
 
 // completed tasks card
 const completedTasksCard = document.querySelector("#completedTasksCard");
 completedTasksCard.addEventListener("click", () => {
-    window.location.href = "components/tasks.html";
+    window.location.href = "components/tasks.html?status=completed";
 });
 
 // get data from local storage

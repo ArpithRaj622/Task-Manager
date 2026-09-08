@@ -3,9 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <title>Tasks</title>
+    <link rel="stylesheet" href="../dist/output.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Task Manager</h1>
+        
+        <div class="header-buttons">
+            <!-- light/dark mode toggle -->
+            <button aria-label="Toggle theme">
+                <i class="fa-regular fa-moon"></i>
+            </button>
+
+            <!-- profile -->
+            <button aria-label="Profile">
+                <i class="fa-regular fa-user"></i>
+            </button>
+
+            <!-- mobile menu -->
+            <button aria-label="Open menu" class="lg:hidden" id="mobileMenuOpenBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- backdrop -->
+    <div class="mobile-menu-backdrop opacity-0 pointer-events-none">
+    </div>
+
+    <!-- mobile nav -->
+    <nav class="mobile-menu translate-x-full">
+        <div class="mobile-nav-header">
+            <p>Menu</p>
+            <button aria-label="Close mobile menu" id="mobileMenuCloseBtn" class="hover:text-red-600 cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">My Tasks</a>
+            <a href="#">Completed</a>
+            <a href="#">Categories</a>
+        </div>
+    </nav>
+
+    <!-- desktop nav -->
+    <aside>
+        <div class="desktop-nav-menu">
+            <a href="#">
+                <i class="fa-solid fa-table-columns"></i>Dashboard
+            </a>
+            <a href="#">
+                <i class="fa-regular fa-clipboard"></i>My Tasks
+            </a>
+            <a href="#">
+                <i class="fa-regular fa-square-check"></i>Completed
+            </a>
+            <a href="#">
+                <i class="fa-solid fa-layer-group"></i>Categories
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content-inTasksPage">
+        <!-- tasks container -->
+        <div class="tasks-container-inTasksPage">
+            <!-- task card -->
+            <div class="task-card-inTasksPage">
+                <!-- task details -->
+                <div class="task-details-inTasksPage">
+                    <div>
+                        <p class="task-title--inTasksPage">Title</p>
+                        <p class="task-description-inTasksPage">description</p>
+                    </div>
+                    <p class="task-category-inTasksPage">category</p>
+                    <p class="task-priority-inTasksPage">priority</p>
+                    <p class="task-due-date-inTasksPage">due date</p>
+                    <p class="task-status-inTasksPage">status</p>
+                </div>
+                <!-- buttons -->
+                <div class="task-btns-inTasksPage">
+                    <button aria-label="Task edit button" id="editTask-inTasksPage">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Edit
+                    </button>
+                    <button aria-label="Task delete button" id="deleteTask-inTasksPage">
+                        <i class="fa-solid fa-trash-can"></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./tasks.js"></script>
 </body>
 </html>

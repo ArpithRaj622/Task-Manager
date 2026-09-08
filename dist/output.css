@@ -21,6 +21,7 @@
     --color-slate-100: oklch(96.8% 0.007 247.896);
     --color-slate-300: oklch(86.9% 0.022 252.894);
     --color-slate-400: oklch(70.4% 0.04 256.788);
+    --color-slate-600: oklch(44.6% 0.043 257.281);
     --color-slate-800: oklch(27.9% 0.041 260.031);
     --color-black: #000;
     --color-white: #fff;
@@ -923,6 +924,88 @@ aside {
   --tw-font-weight: var(--font-weight-bold);
   font-weight: var(--font-weight-bold);
   color: var(--color-red-600);
+}
+.main-content-inTasksPage {
+  padding: calc(var(--spacing) * 4);
+  @media (width >= 48rem) {
+    padding: calc(var(--spacing) * 8);
+  }
+  @media (width >= 64rem) {
+    margin-left: calc(var(--spacing) * 52);
+  }
+}
+.tasks-container-inTasksPage {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  padding: calc(var(--spacing) * 5);
+  --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.task-card-inTasksPage {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 5);
+  @media (width >= 48rem) {
+    flex-direction: row;
+  }
+  @media (width >= 48rem) {
+    justify-content: space-between;
+  }
+}
+.task-details-inTasksPage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+}
+.task-title--inTasksPage {
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+}
+.task-description-inTasksPage {
+  color: var(--color-slate-600);
+}
+.task-btns-inTasksPage {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 3);
+  @media (width >= 48rem) {
+    width: calc(var(--spacing) * 32);
+  }
+}
+.task-btns-inTasksPage button {
+  width: 100%;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  padding: var(--spacing);
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
+  --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  &:hover {
+    @media (hover: hover) {
+      --tw-translate-y: calc(var(--spacing) * -1);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+  @media (width >= 48rem) {
+    width: calc(var(--spacing) * 32);
+  }
+}
+#editTask-inTasksPage {
+  background-color: var(--color-slate-300);
+}
+#deleteTask-inTasksPage {
+  background-color: var(--color-red-600);
+  color: var(--color-white);
 }
 @property --tw-translate-x {
   syntax: "*";
