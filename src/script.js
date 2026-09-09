@@ -82,6 +82,10 @@ const confirmDeleteTaskModal = document.querySelector(".confirm-delete-task-moda
 const confirmDeleteBtn = document.querySelector(".confirm-delete-btn");
 const cancelConfirmDeleteBtn = document.querySelector(".cancel-confirm-delete-btn");
 
+// profile
+const profileBTn = document.querySelector(".profile-btn");
+const profileDropdown = document.querySelector(".dropdown-container");
+
 // get data from local storage
 const myTasksString = localStorage.getItem("myTasks");
 const myTasks = JSON.parse(myTasksString);
@@ -246,6 +250,11 @@ function renderSummaryCards() {
 
 renderTasks();
 renderSummaryCards();
+
+// profile dropdown
+profileBTn.addEventListener("click", () => {
+    profileDropdown.classList.toggle("hidden");
+});
 
 // mobile menu open event listner
 mobileMenuOpenBtn.addEventListener("click", openMobileMenu);

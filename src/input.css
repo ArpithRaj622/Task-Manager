@@ -378,3 +378,16 @@ aside {
 .cancel-confirm-delete-btn {
     @apply bg-slate-300;
 }
+
+/* profile icon style */
+.profile-container {
+    @apply relative;
+}
+
+.profile-dropdown {
+    @apply absolute right-0 top-full mt-2 w-32 bg-white rounded-md shadow-lg border border-slate-200 p-2 flex flex-col;
+}
+
+.profile-dropdown a {
+    @apply p-2 hover:bg-slate-100 rounded-md;
+}

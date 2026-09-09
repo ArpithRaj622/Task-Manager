@@ -22,9 +22,19 @@
             </button>
 
             <!-- profile -->
-            <button aria-label="Profile">
+            <div class="profile-container">
+            <button aria-label="Profile" class="profile-btn">
                 <i class="fa-regular fa-user"></i>
             </button>
+            <div class="dropdown-container hidden">
+                <div class="profile-dropdown">
+                    <a href="#">Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+            </div>
+            
 
             <!-- mobile menu -->
             <button aria-label="Open menu" class="lg:hidden" id="mobileMenuOpenBtn">
