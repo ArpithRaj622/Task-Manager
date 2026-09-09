@@ -49,18 +49,10 @@ const saveEditBtn = document.querySelector("#editSave");
 const cancelEditBtn = document.querySelector("#editCancel");
 const editTaskFormError = document.querySelector(".edit-form-error");
 
-// view all tasks
-const viewAllTasks = document.querySelector("#viewAllTasks");
-
 // summary card for clicking
 // total tasks card
 const totalTasksCard = document.querySelector("#totalTasksCard");
 totalTasksCard.addEventListener("click", () => {
-    window.location.href = "components/tasks.html?status=all";
-});
-
-// view all tasks link
-viewAllTasks.addEventListener("click", () => {
     window.location.href = "components/tasks.html?status=all";
 });
 
@@ -106,12 +98,19 @@ function closeMobileMenu() {
 // open task form
 function openTaskModal() {
     addTaskModal.classList.remove("hidden");
+    mobileMenuBackdrop.classList.remove("opacity-0");
+    mobileMenuBackdrop.classList.remove("pointer-events-none");
+    body.classList.add("overflow-hidden");
 }
 
 // close task form
 function closeTaskModal() {
     addTaskModal.classList.add("hidden");
     formErrorMsg.classList.add("hidden");
+    addTaskForm.reset();
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
 }
 
 // create task card
@@ -164,6 +163,10 @@ function createTaskCard(task) {
         editTaskModal.classList.add("hidden");
         clickedTaskDetails = task;
         taskDetailsModal.classList.remove("hidden");
+        mobileMenuBackdrop.classList.remove("opacity-0");
+        mobileMenuBackdrop.classList.remove("pointer-events-none");
+        body.classList.add("overflow-hidden");
+
         taskDetailsTitle.textContent = task.title;
         taskDetailsDescription.textContent = task.description;
         taskDetailsCategory.textContent = `Category: ${task.category}`;
@@ -190,6 +193,13 @@ function createTaskCard(task) {
 function renderTasks() {
     tasksContainer.innerHTML = "";
     const latestTasks = tasksArray.slice(-4).reverse();
+    if (latestTasks.length === 0) {
+        const noTasksFoundMsg = document.createElement("p");
+        noTasksFoundMsg.textContent = "No tasks found";
+        noTasksFoundMsg.classList.add("no-tasks-found");
+        tasksContainer.append(noTasksFoundMsg);
+        return;
+    }
 
     // create task cards
     latestTasks.forEach((task) => {
@@ -240,7 +250,11 @@ mobileMenuLinks.forEach((link) => {
 });
 
 // backdrop click close mobile menu
-mobileMenuBackdrop.addEventListener("click", closeMobileMenu);
+mobileMenuBackdrop.addEventListener("click", () => {
+    closeMobileMenu();
+    closeTaskModal();
+    taskDetailsModal.classList.add("hidden");
+});
 
 // open add task form
 addTaskBtn.addEventListener("click", openTaskModal);
@@ -280,6 +294,9 @@ addTaskForm.addEventListener("submit", (event) => {
 // close task details modal
 taskDetailsCloseBtn.addEventListener("click", () => {
     taskDetailsModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
 });
 
 // edit task button
@@ -293,6 +310,10 @@ editTaskBtn.addEventListener("click", () => {
     editPriority.value = clickedTaskDetails.priority;
     editDueDate.value = clickedTaskDetails.dueDate;
     editStatus.value = clickedTaskDetails.taskStatus;
+
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
 });
 
 // edit task form submit button
@@ -321,13 +342,11 @@ editTaskForm.addEventListener("submit", (event) => {
 // close edit task modal
 editModalCloseBtn.addEventListener("click", () => {
     editTaskModal.classList.add("hidden");
-    taskDetailsModal.classList.remove("hidden");
 });
 
 // cancel edit task
 cancelEditBtn.addEventListener("click", () => {
     editTaskModal.classList.add("hidden");
-    taskDetailsModal.classList.remove("hidden");
 });
 
 // delete task
@@ -336,6 +355,19 @@ deleteTaskBtn.addEventListener("click", () => {
     const tasksArrayString = JSON.stringify(tasksArray);
     localStorage.setItem("myTasks", tasksArrayString);
     taskDetailsModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
     renderTasks();
     renderSummaryCards();
+});
+
+// task title input event listener
+taskTitle.addEventListener("input", () => {
+    formErrorMsg.classList.add("hidden");
+});
+
+// task description input event listener
+taskDescription.addEventListener("input", () => {
+    formErrorMsg.classList.add("hidden");
 });

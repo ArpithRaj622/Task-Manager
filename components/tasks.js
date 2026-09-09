@@ -190,6 +190,14 @@ function renderTasks() {
         tasksToRender = tasksArray;
     }
 
+    if (tasksToRender.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.textContent = "No tasks found";
+        emptyMessage.classList.add("empty-message-inTasksPage");
+        tasksContainer.append(emptyMessage);
+        return;
+    }
+
     tasksToRender.slice().reverse().forEach((task) => {
         const card = createTaskCard(task);
         tasksContainer.append(card);

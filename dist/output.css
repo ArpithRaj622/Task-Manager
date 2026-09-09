@@ -21,6 +21,7 @@
     --color-slate-100: oklch(96.8% 0.007 247.896);
     --color-slate-300: oklch(86.9% 0.022 252.894);
     --color-slate-400: oklch(70.4% 0.04 256.788);
+    --color-slate-500: oklch(55.4% 0.046 257.417);
     --color-slate-600: oklch(44.6% 0.043 257.281);
     --color-slate-800: oklch(27.9% 0.041 260.031);
     --color-black: #000;
@@ -398,6 +399,26 @@ aside {
   padding: calc(var(--spacing) * 2);
   font-size: var(--text-lg);
   line-height: var(--tw-leading, var(--text-lg--line-height));
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  &:hover {
+    @media (hover: hover) {
+      --tw-scale-x: 105%;
+      --tw-scale-y: 105%;
+      --tw-scale-z: 105%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-blue-600);
+    }
+  }
 }
 .desktop-nav-menu a i {
   padding-top: var(--spacing);
@@ -469,6 +490,10 @@ aside {
   }
 }
 .add-task-modal {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 50;
   width: 100%;
   @media (width >= 40rem) {
     max-width: 40rem;
@@ -490,8 +515,22 @@ aside {
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
   padding: calc(var(--spacing) * 5);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
   --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  @media (width >= 48rem) {
+    top: calc(var(--spacing) * 20);
+  }
+  @media (width >= 48rem) {
+    left: calc(var(--spacing) * 24);
+  }
+  @media (width >= 64rem) {
+    top: calc(var(--spacing) * 5);
+  }
+  @media (width >= 64rem) {
+    left: calc(1 / 3 * 100%);
+  }
 }
 .add-task-modal .header {
   margin-bottom: calc(var(--spacing) * 2);
@@ -526,7 +565,7 @@ aside {
 .add-task-modal form {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing) * 5);
+  gap: calc(var(--spacing) * 3);
 }
 .add-task-modal form div {
   display: flex;
@@ -625,6 +664,7 @@ aside {
   font-weight: var(--font-weight-light);
 }
 .summary-cards-container {
+  margin-bottom: calc(var(--spacing) * 12);
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: calc(var(--spacing) * 4);
@@ -689,11 +729,27 @@ aside {
 }
 .task-card {
   margin-block: calc(var(--spacing) * 3);
+  cursor: pointer;
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
   padding: calc(var(--spacing) * 4);
   --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  &:hover {
+    @media (hover: hover) {
+      --tw-scale-x: 102%;
+      --tw-scale-y: 102%;
+      --tw-scale-z: 102%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
 }
 .card-title-status {
   display: flex;
@@ -713,6 +769,8 @@ aside {
   text-align: center;
   font-size: var(--text-xs);
   line-height: var(--tw-leading, var(--text-xs--line-height));
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
   color: var(--color-white);
 }
 .task-card .due-date {
@@ -721,11 +779,12 @@ aside {
   line-height: var(--tw-leading, var(--text-sm--line-height));
   color: var(--color-slate-400);
 }
+.view-all-tasks {
+  text-align: center;
+}
 .my-tasks a {
   margin-block: calc(var(--spacing) * 2);
   display: inline-block;
-  width: 100%;
-  text-align: center;
   color: var(--color-slate-400);
   transition-property: all;
   transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -749,6 +808,10 @@ aside {
   }
 }
 .task-details-modal {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 50;
   width: 100%;
   @media (width >= 40rem) {
     max-width: 40rem;
@@ -772,6 +835,12 @@ aside {
   padding: calc(var(--spacing) * 4);
   --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  @media (width >= 48rem) {
+    top: calc(var(--spacing) * 50);
+  }
+  @media (width >= 64rem) {
+    left: calc(var(--spacing) * 64);
+  }
 }
 .task-details-modal .task-details {
   display: flex;
@@ -834,6 +903,10 @@ aside {
   color: var(--color-white);
 }
 .edit-task-modal {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 50;
   width: 100%;
   @media (width >= 40rem) {
     max-width: 40rem;
@@ -855,8 +928,22 @@ aside {
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
   padding: calc(var(--spacing) * 5);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
   --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  @media (width >= 48rem) {
+    top: calc(var(--spacing) * 20);
+  }
+  @media (width >= 48rem) {
+    left: calc(var(--spacing) * 24);
+  }
+  @media (width >= 64rem) {
+    top: 0px;
+  }
+  @media (width >= 64rem) {
+    left: calc(var(--spacing) * 96);
+  }
 }
 .edit-task-modal .header {
   margin-bottom: calc(var(--spacing) * 2);
@@ -891,7 +978,7 @@ aside {
 .edit-task-modal form {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing) * 5);
+  gap: calc(var(--spacing) * 3);
 }
 .edit-task-modal form div {
   display: flex;
@@ -1076,6 +1163,16 @@ aside {
   --tw-font-weight: var(--font-weight-semibold);
   font-weight: var(--font-weight-semibold);
 }
+.empty-message-inTasksPage {
+  padding-block: calc(var(--spacing) * 10);
+  text-align: center;
+  color: var(--color-slate-500);
+}
+.no-tasks-found {
+  margin-block: calc(var(--spacing) * 10);
+  text-align: center;
+  color: var(--color-slate-400);
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;
@@ -1221,11 +1318,6 @@ aside {
   syntax: "*";
   inherits: false;
 }
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-scale-x {
   syntax: "*";
   inherits: false;
@@ -1240,6 +1332,11 @@ aside {
   syntax: "*";
   inherits: false;
   initial-value: 1;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
@@ -1277,10 +1374,10 @@ aside {
       --tw-font-weight: initial;
       --tw-duration: initial;
       --tw-ease: initial;
-      --tw-border-style: solid;
       --tw-scale-x: 1;
       --tw-scale-y: 1;
       --tw-scale-z: 1;
+      --tw-border-style: solid;
     }
   }
 }

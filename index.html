@@ -46,9 +46,9 @@
             </button>
         </div>
         <div class="mobile-nav-links">
-            <a href="#">Dashboard</a>
-            <a href="#">My Tasks</a>
-            <a href="#">Completed</a>
+            <a href="./index.html">Dashboard</a>
+            <a href="./components/tasks.html?status=all">My Tasks</a>
+            <a href="./components/tasks.html?status=completed">Completed</a>
             <a href="#">Categories</a>
         </div>
     </nav>
@@ -56,17 +56,14 @@
     <!-- desktop nav -->
     <aside>
         <div class="desktop-nav-menu">
-            <a href="#">
+            <a href="./index.html">
                 <i class="fa-solid fa-table-columns"></i>Dashboard
             </a>
-            <a href="#">
+            <a href="./components/tasks.html?status=all">
                 <i class="fa-regular fa-clipboard"></i>My Tasks
             </a>
-            <a href="#">
+            <a href="./components/tasks.html?status=completed">
                 <i class="fa-regular fa-square-check"></i>Completed
-            </a>
-            <a href="#">
-                <i class="fa-solid fa-layer-group"></i>Categories
             </a>
         </div>
     </aside>
@@ -204,7 +201,10 @@
                 </div>
 
                 <!-- link -->
-                <a href="#" id="viewAllTasks">View All Tasks</a>
+                <div class="view-all-tasks">
+                    <a href="./components/tasks.html?status=all">View All Tasks</a>
+                </div>
+                
             </div>
         </div>
 
