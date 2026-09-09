@@ -357,3 +357,24 @@ aside {
 .no-tasks-found {
     @apply text-slate-400 text-center my-10;
 }
+
+/* task delete confirmation modal */
+.confirm-delete-task-modal {
+    @apply bg-white p-5 container max-w-2xl mx-auto rounded-lg shadow-md fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50;
+}
+
+.confirm-delete-task-btns {
+    @apply flex gap-3;
+}
+
+.confirm-delete-btn {
+    @apply bg-red-600 text-white;
+}
+
+.confirm-delete-task-btns button {
+    @apply font-medium w-28 p-1 rounded-md shadow-sm cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out;
+}
+
+.cancel-confirm-delete-btn {
+    @apply bg-slate-300;
+}

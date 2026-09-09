@@ -77,6 +77,11 @@ completedTasksCard.addEventListener("click", () => {
     window.location.href = "components/tasks.html?status=completed";
 });
 
+// confirm delete variables
+const confirmDeleteTaskModal = document.querySelector(".confirm-delete-task-modal");
+const confirmDeleteBtn = document.querySelector(".confirm-delete-btn");
+const cancelConfirmDeleteBtn = document.querySelector(".cancel-confirm-delete-btn");
+
 // get data from local storage
 const myTasksString = localStorage.getItem("myTasks");
 const myTasks = JSON.parse(myTasksString);
@@ -258,6 +263,8 @@ mobileMenuBackdrop.addEventListener("click", () => {
     closeMobileMenu();
     closeTaskModal();
     taskDetailsModal.classList.add("hidden");
+    editTaskModal.classList.add("hidden");
+    confirmDeleteTaskModal.classList.add("hidden");
 });
 
 // open add task form
@@ -361,15 +368,8 @@ cancelEditBtn.addEventListener("click", () => {
 
 // delete task
 deleteTaskBtn.addEventListener("click", () => {
-    tasksArray.splice(tasksArray.indexOf(clickedTaskDetails), 1);
-    const tasksArrayString = JSON.stringify(tasksArray);
-    localStorage.setItem("myTasks", tasksArrayString);
+    confirmDeleteTaskModal.classList.remove("hidden");
     taskDetailsModal.classList.add("hidden");
-    mobileMenuBackdrop.classList.add("opacity-0");
-    mobileMenuBackdrop.classList.add("pointer-events-none");
-    body.classList.remove("overflow-hidden");
-    renderTasks();
-    renderSummaryCards();
 });
 
 // task title input event listener
@@ -380,4 +380,25 @@ taskTitle.addEventListener("input", () => {
 // task description input event listener
 taskDescription.addEventListener("input", () => {
     formErrorMsg.classList.add("hidden");
+});
+
+// confirm delete event listener
+confirmDeleteBtn.addEventListener("click", () => {
+    tasksArray.splice(tasksArray.indexOf(clickedTaskDetails), 1);
+    const tasksArrayString = JSON.stringify(tasksArray);
+    localStorage.setItem("myTasks", tasksArrayString);
+    confirmDeleteTaskModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
+    renderTasks();
+    renderSummaryCards();
+});
+
+// cancel confirm delete
+cancelConfirmDeleteBtn.addEventListener("click", () => {
+    confirmDeleteTaskModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
 });

@@ -26,6 +26,10 @@ const saveEditBtn = document.querySelector("#editSave");
 const cancelEditBtn = document.querySelector("#editCancel");
 const editTaskFormError = document.querySelector(".edit-form-error");
 
+const confirmDeleteTaskModal = document.querySelector(".confirm-delete-task-modal");
+const confirmDeleteBtn = document.querySelector(".confirm-delete-btn");
+const cancelConfirmDeleteBtn = document.querySelector(".cancel-confirm-delete-btn");
+
 // get data from local storage
 const myTasksString = localStorage.getItem("myTasks");
 const myTasks = JSON.parse(myTasksString);
@@ -159,15 +163,31 @@ function createTaskCard(task) {
         editPriority.value = task.priority;
         editDueDate.value = task.dueDate;
         editStatus.value = task.taskStatus;
+
+        mobileMenuBackdrop.classList.remove("opacity-0");
+        mobileMenuBackdrop.classList.remove("pointer-events-none");
+        body.classList.add("overflow-hidden");
     });
 
     // delete button event listener
     deleteTaskBtn.addEventListener("click", () => {
-        tasksArray.splice(tasksArray.indexOf(task), 1);
-        const tasksArrayString = JSON.stringify(tasksArray);
-        localStorage.setItem("myTasks", tasksArrayString);
-        renderTasks();
+        confirmDeleteTaskModal.classList.remove("hidden");
+        mobileMenuBackdrop.classList.remove("opacity-0");
+        mobileMenuBackdrop.classList.remove("pointer-events-none");
+        body.classList.add("overflow-hidden");
     });
+
+    // confirm delete button
+    confirmDeleteBtn.addEventListener("click", () => {
+    confirmDeleteTaskModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
+    tasksArray.splice(tasksArray.indexOf(task), 1);
+    const tasksArrayString = JSON.stringify(tasksArray);
+    localStorage.setItem("myTasks", tasksArrayString);
+    renderTasks();
+});
 
     return taskCard;
 }
@@ -220,7 +240,11 @@ mobileMenuLinks.forEach((link) => {
 });
 
 // backdrop click close mobile menu
-mobileMenuBackdrop.addEventListener("click", closeMobileMenu);
+mobileMenuBackdrop.addEventListener("click", () => {
+    closeMobileMenu();
+    editTaskModal.classList.add("hidden");
+    confirmDeleteTaskModal.classList.add("hidden");
+});
 
 
 // edit task form submit button
@@ -254,6 +278,17 @@ editModalCloseBtn.addEventListener("click", () => {
 // edit modal cancel button event listener
 cancelEditBtn.addEventListener("click", () => {
     editTaskModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
+});
+
+// cancel confirm delete
+cancelConfirmDeleteBtn.addEventListener("click", () => {
+    confirmDeleteTaskModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
 });
 
 // event listeners end here
