@@ -315,9 +315,9 @@ editTaskBtn.addEventListener("click", () => {
     editDueDate.value = clickedTaskDetails.dueDate;
     editStatus.value = clickedTaskDetails.taskStatus;
 
-    mobileMenuBackdrop.classList.add("opacity-0");
-    mobileMenuBackdrop.classList.add("pointer-events-none");
-    body.classList.remove("overflow-hidden");
+    mobileMenuBackdrop.classList.remove("opacity-0");
+    mobileMenuBackdrop.classList.remove("pointer-events-none");
+    body.classList.add("overflow-hidden");
 });
 
 // edit task form submit button
@@ -346,11 +346,17 @@ editTaskForm.addEventListener("submit", (event) => {
 // close edit task modal
 editModalCloseBtn.addEventListener("click", () => {
     editTaskModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
 });
 
 // cancel edit task
 cancelEditBtn.addEventListener("click", () => {
     editTaskModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
 });
 
 // delete task

@@ -491,8 +491,8 @@ aside {
 }
 .add-task-modal {
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: calc(1 / 2 * 100%);
+  left: calc(1 / 2 * 100%);
   z-index: 50;
   width: 100%;
   @media (width >= 40rem) {
@@ -512,6 +512,9 @@ aside {
   }
   margin-inline: auto;
   max-width: var(--container-xl);
+  --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+  --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
   padding: calc(var(--spacing) * 5);
@@ -519,18 +522,6 @@ aside {
   line-height: var(--tw-leading, var(--text-sm--line-height));
   --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  @media (width >= 48rem) {
-    top: calc(var(--spacing) * 20);
-  }
-  @media (width >= 48rem) {
-    left: calc(var(--spacing) * 24);
-  }
-  @media (width >= 64rem) {
-    top: calc(var(--spacing) * 5);
-  }
-  @media (width >= 64rem) {
-    left: calc(1 / 3 * 100%);
-  }
 }
 .add-task-modal .header {
   margin-bottom: calc(var(--spacing) * 2);
@@ -809,8 +800,8 @@ aside {
 }
 .task-details-modal {
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: calc(1 / 2 * 100%);
+  left: calc(1 / 2 * 100%);
   z-index: 50;
   width: 100%;
   @media (width >= 40rem) {
@@ -830,17 +821,14 @@ aside {
   }
   margin-inline: auto;
   max-width: var(--container-4xl);
+  --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+  --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
   padding: calc(var(--spacing) * 4);
   --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  @media (width >= 48rem) {
-    top: calc(var(--spacing) * 50);
-  }
-  @media (width >= 64rem) {
-    left: calc(var(--spacing) * 64);
-  }
 }
 .task-details-modal .task-details {
   display: flex;
@@ -904,8 +892,8 @@ aside {
 }
 .edit-task-modal {
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: calc(1 / 2 * 100%);
+  left: calc(1 / 2 * 100%);
   z-index: 50;
   width: 100%;
   @media (width >= 40rem) {
@@ -925,6 +913,9 @@ aside {
   }
   margin-inline: auto;
   max-width: var(--container-xl);
+  --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+  --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
   padding: calc(var(--spacing) * 5);
@@ -932,18 +923,6 @@ aside {
   line-height: var(--tw-leading, var(--text-sm--line-height));
   --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  @media (width >= 48rem) {
-    top: calc(var(--spacing) * 20);
-  }
-  @media (width >= 48rem) {
-    left: calc(var(--spacing) * 24);
-  }
-  @media (width >= 64rem) {
-    top: 0px;
-  }
-  @media (width >= 64rem) {
-    left: calc(var(--spacing) * 96);
-  }
 }
 .edit-task-modal .header {
   margin-bottom: calc(var(--spacing) * 2);
