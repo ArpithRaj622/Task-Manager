@@ -49,6 +49,30 @@ const saveEditBtn = document.querySelector("#editSave");
 const cancelEditBtn = document.querySelector("#editCancel");
 const editTaskFormError = document.querySelector(".edit-form-error");
 
+const themeToggleBtn = document.querySelector(".theme-toggle-btn");
+const themeToggleIcon = document.querySelector(".theme-toggle-btn i");
+
+if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+}
+function updateThemeIcon() {
+    const isDark = document.documentElement.classList.contains("dark");
+
+    themeToggleIcon.classList.toggle("fa-moon", !isDark);
+    themeToggleIcon.classList.toggle("fa-sun", isDark);
+}
+
+updateThemeIcon();
+
+themeToggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+
+    const isDark = document.documentElement.classList.contains("dark");
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    updateThemeIcon();
+});
+
 // view all tasks link
 const viewAllTasks = document.querySelector(".view-all-tasks");
 
@@ -85,6 +109,7 @@ const cancelConfirmDeleteBtn = document.querySelector(".cancel-confirm-delete-bt
 // profile
 const profileBTn = document.querySelector(".profile-btn");
 const profileDropdown = document.querySelector(".dropdown-container");
+
 
 // get data from local storage
 const myTasksString = localStorage.getItem("myTasks");

@@ -30,6 +30,30 @@ const confirmDeleteTaskModal = document.querySelector(".confirm-delete-task-moda
 const confirmDeleteBtn = document.querySelector(".confirm-delete-btn");
 const cancelConfirmDeleteBtn = document.querySelector(".cancel-confirm-delete-btn");
 
+const themeToggleBtn = document.querySelector(".theme-toggle-btn");
+const themeToggleIcon = document.querySelector(".theme-toggle-btn i");
+
+if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+}
+function updateThemeIcon() {
+    const isDark = document.documentElement.classList.contains("dark");
+
+    themeToggleIcon.classList.toggle("fa-moon", !isDark);
+    themeToggleIcon.classList.toggle("fa-sun", isDark);
+}
+
+updateThemeIcon();
+
+themeToggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+
+    const isDark = document.documentElement.classList.contains("dark");
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    updateThemeIcon();
+});
+
 // get data from local storage
 const myTasksString = localStorage.getItem("myTasks");
 const myTasks = JSON.parse(myTasksString);
@@ -273,6 +297,9 @@ editTaskForm.addEventListener("submit", (event) => {
 // edit modal close button event listener
 editModalCloseBtn.addEventListener("click", () => {
     editTaskModal.classList.add("hidden");
+    mobileMenuBackdrop.classList.add("opacity-0");
+    mobileMenuBackdrop.classList.add("pointer-events-none");
+    body.classList.remove("overflow-hidden");
 });
 
 // edit modal cancel button event listener
