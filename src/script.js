@@ -49,6 +49,9 @@ const saveEditBtn = document.querySelector("#editSave");
 const cancelEditBtn = document.querySelector("#editCancel");
 const editTaskFormError = document.querySelector(".edit-form-error");
 
+// view all tasks link
+const viewAllTasks = document.querySelector(".view-all-tasks");
+
 // summary card for clicking
 // total tasks card
 const totalTasksCard = document.querySelector("#totalTasksCard");
@@ -198,9 +201,10 @@ function renderTasks() {
         noTasksFoundMsg.textContent = "No tasks found";
         noTasksFoundMsg.classList.add("no-tasks-found");
         tasksContainer.append(noTasksFoundMsg);
+        viewAllTasks.classList.add("hidden");
         return;
     }
-
+    viewAllTasks.classList.remove("hidden");
     // create task cards
     latestTasks.forEach((task) => {
         const taskCard = createTaskCard(task);
