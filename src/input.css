@@ -7,386 +7,50 @@
 
 @layer base {
   body {
-    @apply font-poppins bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-100;
+    @apply font-poppins 
+    bg-slate-100 
+    text-slate-800
+    dark:bg-slate-800
+    dark:text-slate-100;
+  }
+  button {
+    @apply cursor-pointer;
   }
 }
 
-* {
-    /* border: 1px solid red; */
-}
+
 
 /* header style */
 header {
-    @apply flex justify-between px-4 py-2 bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 md:h-14;
+    @apply flex 
+    justify-between 
+    px-4 
+    py-2 
+    bg-white 
+    shadow-md 
+    sticky 
+    top-0 
+    z-50
+    md:h-14
+    dark:bg-slate-900
+    dark:text-slate-100
+    dark:border-b
+    dark:border-b-slate-800;
 }
 
 h1 {
-    @apply text-xl font-bold;
+    @apply text-2xl 
+    font-bold;
 }
 
 .header-buttons {
-    @apply flex gap-4 items-center text-lg;
+    @apply flex 
+    gap-4 
+    items-center 
+    text-lg;
 }
 
-.header-buttons button {
-    @apply cursor-pointer;
-}
-
-/* backdrop */
-.mobile-menu-backdrop {
-    @apply fixed inset-0 bg-black/40 z-40 transition-opacity duration-300 ease-in-out;
-}
-
-/* mobile menu */
-.mobile-menu {
-    @apply w-2/4 fixed right-0 top-0 h-full z-50 flex flex-col gap-5 bg-white dark:bg-slate-800 shadow-xl p-2 transition-transform duration-500 ease-in-out;
-}
-
-.mobile-nav-header {
-    @apply flex justify-between text-lg;
-}
-
-.mobile-nav-links {
-    @apply flex flex-col gap-2;
-}
-
-/* side nav desktop */
-aside {
-    @apply w-52 fixed left-0 top-14 h-full bg-white dark:bg-slate-800 p-5 shadow-xl hidden lg:block;
-}
-
-.desktop-nav-menu {
-    @apply flex flex-col gap-4;
-}
-
-.desktop-nav-menu a {
-    @apply flex gap-2 p-2 text-lg hover:text-blue-600 hover:scale-105 transition-all duration-300 ease-in-out;
-}
-
-.desktop-nav-menu a i {
-    @apply pt-1;
-}
-
-/* main content */
-.main-content {
-    @apply p-4 md:p-8 lg:ml-52;
-}
-
-.add-task {
-    @apply container max-w-7xl mx-auto md:text-right mb-8;
-}
-
-/* add task button */
-.add-task button {
-    @apply w-full md:w-40 p-2 bg-blue-700 text-white font-bold rounded-lg shadow-lg cursor-pointer hover:bg-blue-600 hover:-translate-y-1 transition-all duration-300 ease-in-out;
-}
-
-/* add task modal */
-.add-task-modal {
-    @apply bg-white dark:bg-slate-800 p-5 text-sm rounded-lg shadow-md container max-w-xl mx-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50;
-}
-
-.add-task-modal .header {
-    @apply flex justify-between p-2 items-center mb-2;
-}
-
-.add-task-modal .header p {
-    @apply text-xl font-bold;
-}
-
-.add-task-modal .header button {
-    @apply cursor-pointer text-lg hover:text-red-600 transition-all duration-200 ease-in-out;
-}
-
-.add-task-modal form {
-    @apply flex flex-col gap-3;
-}
-
-.add-task-modal form div {
-    @apply flex flex-col;
-}
-
-.add-task-modal form div label {
-    @apply font-medium;
-}
-
-.add-task-modal form div input, textarea, select {
-    @apply bg-slate-50 dark:bg-slate-700 p-1 border border-slate-300 rounded-md focus:outline-none cursor-pointer;
-}
-
-.add-task-modal form div select {
-    @apply bg-slate-50 dark:bg-slate-700;
-}
-
-.add-task-modal form div textarea {
-    @apply bg-slate-50 dark:bg-slate-700;
-}
-
-.add-task-modal form .form-action-btns {
-    @apply w-full md:flex-row gap-2;
-}
-
-.form-action-btns button {
-    @apply md:w-1/2 px-1 py-2 hover:-translate-y-1 transition-all duration-300 ease-in-out cursor-pointer text-white font-bold rounded-md;
-}
-
-.form-error {
-    @apply text-red-600 font-bold text-lg;
-}
-
-/* dashboard */
-.dashboard-content {
-    @apply container max-w-7xl mx-auto;
-}
-
-.dashboard-heading {
-    @apply text-center my-6;
-}
-
-.dashboard-heading h2 {
-    @apply text-xl font-bold;
-}
-
-.dashboard-heading p {
-    @apply text-sm font-light;
-}
-
-/* summary cards */
-.summary-cards-container {
-    @apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 mb-12;
-}
-
-.summary-card {
-    @apply bg-white dark:bg-slate-800 p-5 rounded-lg shadow-md flex justify-between cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out;
-}
-
-.summary-card .card-icon-label {
-    @apply flex gap-2;
-}
-
-.summary-card .card-icon-label i {
-    @apply pt-1;
-}
-
-.summary-card .card-icon-label .card-label {
-    @apply font-medium;
-}
-
-.summary-card .card-value {
-    @apply text-lg font-bold;
-}
-
-/* my tasks */
-.my-tasks {
-    @apply my-6;
-}
-
-.my-tasks h3 {
-    @apply text-center text-lg font-bold;
-}
-
-.task-card {
-    @apply bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md my-3 cursor-pointer hover:scale-102 transition-all duration-300 ease-in-out;
-}
-
-.card-title-status {
-    @apply flex justify-between;
-}
-
-.card-title-status .title {
-    @apply text-sm font-medium;
-}
-
-.card-title-status .status {
-    @apply text-xs px-2 py-1 text-white rounded-2xl w-24 text-center font-medium;
-}
-
-.task-card .due-date {
-    @apply text-sm mt-2 text-slate-400;
-}
 
-.view-all-tasks {
-    @apply text-center;
-}
-
-.my-tasks a {
-    @apply my-2 text-slate-400 hover:text-blue-500 hover:scale-105 transition-all duration-200 ease-in-out inline-block;
-}
-
-/* task details modal */
-.task-details-modal {
-    @apply bg-white dark:bg-slate-800 shadow-md rounded-lg p-4 container max-w-4xl mx-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50;
-}
-
-.task-details-modal .task-details {
-    @apply flex flex-col gap-2;
-}
-
-.task-details-modal .task-details .title {
-    @apply font-bold text-lg;
-}
-
-.task-details-modal .task-details .description {
-    @apply text-sm font-light;
-}
-
-.task-details-modal .task-details-btns {
-    @apply flex gap-4 mt-5;
-}
-
-.task-details-modal .task-details-btns button {
-    @apply w-32 bg-red-100 p-2 flex gap-2 items-center text-lg rounded-md shadow-md hover:-translate-y-1 transition-all duration-300 ease-in-out cursor-pointer;
-}
-
-#editTaskBtn {
-    @apply bg-slate-300 dark:bg-slate-600 font-medium;
-}
-
-#deleteTaskBtn {
-    @apply bg-red-600 text-white font-medium;
-}
-
-.edit-task-modal {
-    @apply bg-white dark:bg-slate-800 p-5 text-sm rounded-lg shadow-md container max-w-xl mx-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50;
-}
-
-.edit-task-modal .header {
-    @apply flex justify-between p-2 items-center mb-2;
-}
-
-.edit-task-modal .header p {
-    @apply text-xl font-bold;
-}
-
-.edit-task-modal .header button {
-    @apply cursor-pointer text-lg hover:text-red-600 transition-all duration-200 ease-in-out;
-}
-
-.edit-task-modal form {
-    @apply flex flex-col gap-3;
-}
-
-.edit-task-modal form div {
-    @apply flex flex-col;
-}
-
-.edit-task-modal form div label {
-    @apply font-medium;
-}
-
-.edit-task-modal form div input, textarea, select {
-    @apply bg-slate-50 dark:bg-slate-700 p-1 border border-slate-300 rounded-md focus:outline-none cursor-pointer;
-}
-
-.edit-task-modal form .form-action-btns {
-    @apply w-full md:flex-row gap-2;
-}
-
-.edit-form-error {
-    @apply text-red-600 font-bold text-lg;
-}
-
-
-
-/* style for tasks.html page*/
-/* main content */
-.main-content-inTasksPage {
-    @apply p-4 md:p-8 lg:ml-52;
-}
-
-/* task-container */
-.tasks-container-inTasksPage {
-    @apply flex flex-col gap-6 container mx-auto my-5;   
-}
-
-/* task card */
-.task-card-inTasksPage {
-    @apply flex flex-col gap-5 md:flex-row md:justify-between bg-white dark:bg-slate-800 p-5 rounded-lg shadow-md;
-}
-
-/* task details */
-.task-details-inTasksPage {
-    @apply flex flex-col gap-2;
-}
-
-/* task title */
-.task-title-inTasksPage {
-    @apply font-bold text-lg;
-}
-
-/* task description */
-.task-description-inTasksPage {
-    @apply text-slate-600 dark:text-slate-300;
-}
-
-/* task status */
-.task-status-inTasksPage {
-    @apply w-28 text-sm p-0.5 text-center rounded-2xl text-white font-medium
-}
-
-/* task buttons container */
-.task-btns-inTasksPage {
-    @apply flex flex-col gap-3 md:w-32;
-}
-
-/* task buttons */
-.task-btns-inTasksPage button {
-    @apply p-1 w-full md:w-32 font-medium rounded-md shadow-sm cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out;
-}
-
-/* task edit btn */
-#editTask-inTasksPage {
-    @apply bg-slate-300 dark:bg-slate-600;
-}
-
-/* task delete btn */
-#deleteTask-inTasksPage {
-    @apply bg-red-600 text-white;
-}
-
-
-/* tasks-filter */
-.tasks-filter {
-    @apply flex gap-3;
-}
-
-.tasks-filter p {
-    @apply bg-slate-400 dark:bg-slate-600 px-2 py-1 text-xs rounded-2xl text-white font-medium cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out;
-}
-
-.tasks-filter .active {
-    @apply font-semibold bg-blue-700;
-}
-
-/* empty tasks message */
-.empty-message-inTasksPage {
-    @apply text-center text-slate-500 dark:text-slate-400 py-10;
-}
-
-.no-tasks-found {
-    @apply text-slate-400 dark:text-slate-500 text-center my-10;
-}
-
-/* task delete confirmation modal */
-.confirm-delete-task-modal {
-    @apply bg-white dark:bg-slate-800 p-5 container max-w-2xl mx-auto rounded-lg shadow-md fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50;
-}
-
-.confirm-delete-task-btns {
-    @apply flex gap-3;
-}
-
-.confirm-delete-btn {
-    @apply bg-red-600 text-white;
-}
-
-.confirm-delete-task-btns button {
-    @apply font-medium w-28 p-1 rounded-md shadow-sm cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out;
-}
-
-.cancel-confirm-delete-btn {
-    @apply bg-slate-300 dark:bg-slate-600;
-}
 
 /* profile icon style */
 .profile-container {
@@ -394,9 +58,625 @@ aside {
 }
 
 .profile-dropdown {
-    @apply absolute right-0 top-full mt-2 w-32 bg-white dark:bg-slate-800 rounded-md shadow-lg border border-slate-200 p-2 flex flex-col;
+    @apply absolute 
+    right-0
+    transition-opacity 
+    duration-300 
+    ease-in-out
+    mt-2
+    w-32 
+    bg-white 
+    rounded-md 
+    shadow-lg 
+    border 
+    border-slate-300 
+    p-2 
+    flex 
+    flex-col
+    dark:bg-slate-700
+    dark:border-slate-600;
 }
 
 .profile-dropdown a {
-    @apply p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-md;
+    @apply p-2 
+    hover:bg-slate-100 
+    rounded-md
+    dark:hover:bg-slate-600;
+}
+
+/* background cover */
+.background-cover {
+    @apply fixed 
+    inset-0 
+    bg-black/50 
+    z-40 
+    transition-opacity 
+    duration-300 
+    ease-in-out;
+}
+
+
+
+/* mobile menu */
+.mobile-menu {
+    @apply w-2/4
+    fixed 
+    right-0 
+    top-0 
+    h-full 
+    z-50 
+    flex 
+    flex-col 
+    gap-5 
+    bg-white  
+    shadow-xl 
+    p-2 
+    transition-transform 
+    duration-500 
+    ease-in-out
+    lg:translate-x-full
+    dark:bg-slate-800
+}
+
+.mobile-nav-header {
+    @apply flex
+    justify-between 
+    text-lg;
+}
+
+#closeMobileMenuBtn {
+    @apply hover:text-red-500; 
+}
+
+.mobile-nav-links {
+    @apply flex 
+    flex-col 
+    gap-2;
+}
+
+
+
+/* side nav desktop */
+aside {
+    @apply 
+    w-52 
+    fixed 
+    left-0 
+    top-14 
+    h-full 
+    bg-white 
+    p-5 shadow-xl 
+    hidden lg:block
+    dark:bg-slate-900
+    dark:text-slate-100
+    dark:border-r
+    dark:border-r-slate-700;
+}
+
+.desktop-nav-menu {
+    @apply flex flex-col gap-4;
+}
+
+.desktop-nav-menu a {
+    @apply flex 
+    gap-2 
+    p-2 
+    text-lg 
+    hover:text-blue-600 
+    hover:scale-105 
+    transition-all 
+    duration-300 
+    ease-in-out;
+}
+
+.desktop-nav-menu a i {
+    @apply pt-1;
+}
+
+
+
+/* main content */
+.main-content {
+    @apply p-4 
+    md:p-8 
+    lg:ml-52;
+}
+
+
+
+/* add task container */
+.add-task {
+    @apply container 
+    max-w-7xl 
+    mx-auto  
+    mb-8;
+}
+
+/* add task button */
+.add-task #addTaskBtn {
+    @apply w-full 
+    md:w-40 
+    p-2 
+    bg-blue-700 
+    text-white 
+    font-bold 
+    rounded-lg 
+    shadow-md 
+    hover:bg-blue-600 
+    hover:-translate-y-1 
+    transition-all 
+    duration-300 
+    ease-in-out;
+}
+
+/* add task modal */
+.add-task-modal {
+    @apply bg-white 
+    border
+    border-slate-300 
+    p-5 
+    text-sm 
+    rounded-lg 
+    shadow-md 
+    container 
+    max-w-xl 
+    mx-auto 
+    fixed 
+    top-1/2 
+    left-1/2 
+    -translate-x-1/2 
+    -translate-y-1/2 
+    z-50;
+}
+
+.add-task-modal .header {
+    @apply flex 
+    justify-between 
+    p-2 
+    items-center 
+    mb-2;
+}
+
+.add-task-modal .header p {
+    @apply text-xl 
+    font-bold;
+}
+
+.add-task-modal #addTaskFormCloseBtn {
+    @apply cursor-pointer 
+    text-lg 
+    hover:text-red-600 
+    transition-all 
+    duration-200 
+    ease-in-out;
+}
+
+.add-task-modal form {
+    @apply flex 
+    flex-col 
+    gap-3;
+}
+
+.add-task-modal form div {
+    @apply flex 
+    flex-col;
+}
+
+.add-task-modal form div label {
+    @apply font-medium;
+}
+
+.add-task-modal form #task-title, #task-description, #category, #priority, #due-date, #task-status {
+    @apply bg-slate-50 
+    p-1
+    border 
+    border-slate-300 
+    rounded-md 
+    focus:outline-none 
+    cursor-pointer;
+}
+
+.form-error {
+    @apply text-red-600
+    font-bold
+    text-lg;
+}
+
+.add-task-modal form .form-action-btns {
+    @apply w-full 
+    md:flex-row 
+    gap-2;
+}
+
+.form-action-btns button {
+    @apply md:w-1/2 
+    px-1 
+    py-2 
+    hover:-translate-y-1 
+    transition-all 
+    duration-300 
+    ease-in-out 
+    cursor-pointer 
+    text-white 
+    font-bold 
+    rounded-md;
+}
+
+.form-action-btns #taskAdd {
+    @apply bg-blue-700 
+    hover:bg-blue-600;
+}
+
+.form-action-btns #taskCancel {
+    @apply bg-red-600 
+    hover:bg-red-500
+}
+
+
+
+/* dashboard */
+.dashboard-content {
+    @apply container 
+    max-w-7xl 
+    mx-auto;
+}
+
+.dashboard-heading {
+    @apply text-center 
+    my-6;
+}
+
+.dashboard-heading h2 {
+    @apply text-xl 
+    font-bold;
+}
+
+.dashboard-heading p {
+    @apply text-sm 
+    font-light;
+}
+
+
+
+
+/* summary cards */
+.summary-cards-container {
+    @apply grid 
+    grid-cols-1 
+    gap-4 
+    md:grid-cols-2 
+    lg:grid-cols-4 
+    mb-12;
+}
+
+.summary-card {
+    @apply bg-white 
+    border
+    border-slate-300 
+    p-5 
+    rounded-lg 
+    shadow-md 
+    flex 
+    justify-between 
+    cursor-pointer 
+    hover:scale-105 
+    transition-all 
+    duration-300 
+    ease-in-out
+    dark:bg-slate-700
+    dark:border-slate-600;
+}
+
+.summary-card .card-icon-label {
+    @apply flex 
+    items-center 
+    gap-2;
+}
+
+.summary-card .card-icon-label .card-label {
+    @apply font-medium;
+}
+
+.summary-card .card-value {
+    @apply text-lg 
+    font-bold;
+}
+
+
+
+
+/* my tasks */
+.my-tasks {
+    @apply my-6;
+}
+
+.my-tasks h3 {
+    @apply text-center 
+    text-lg 
+    font-bold
+    my-5;
+}
+
+.tasks-container {
+    @apply flex
+    flex-col 
+    gap-5;
+}
+
+.task-card {
+    @apply bg-white 
+    p-4
+    border
+    border-slate-300 
+    rounded-lg 
+    shadow-md 
+    cursor-pointer 
+    hover:scale-102 
+    transition-all 
+    duration-300 
+    ease-in-out;
+}
+
+.card-title-status {
+    @apply flex 
+    justify-between;
+}
+
+.card-title-status .title {
+    @apply text-sm 
+    font-medium;
+}
+
+.card-title-status .status {
+    @apply text-xs 
+    px-2 
+    py-1 
+    text-white 
+    rounded-2xl 
+    w-24 
+    text-center 
+    font-medium;
+}
+
+.task-card .due-date {
+    @apply text-sm 
+    mt-2 
+    text-slate-400;
+}
+
+.view-all-tasks {
+    @apply text-center
+    my-5;
+}
+
+.my-tasks a {
+    @apply my-2 
+    text-slate-400 
+    hover:text-blue-500 
+    hover:scale-105 
+    transition-all 
+    duration-200 
+    ease-in-out 
+    inline-block;
+}
+
+
+
+
+/* task details modal */
+.task-details-modal {
+    @apply bg-white
+    border
+    border-slate-300
+    shadow-md 
+    rounded-lg 
+    p-4 container 
+    max-w-4xl 
+    mx-auto 
+    fixed 
+    top-1/2 
+    left-1/2 
+    -translate-x-1/2 
+    -translate-y-1/2 
+    z-50;
+}
+
+.task-details-modal #taskDetailsCloseBtn {
+    @apply hover:text-red-600 
+    cursor-pointer;
+}
+
+.task-details-modal .task-details {
+    @apply flex 
+    flex-col 
+    gap-2;
+}
+
+.task-details-modal .task-details .title {
+    @apply font-bold 
+    text-lg;
+}
+
+.task-details-modal .task-details .description {
+    @apply text-sm 
+    font-light;
+}
+
+.task-details-modal .task-details-btns {
+    @apply flex 
+    gap-4 
+    mt-5;
+}
+
+.task-details-modal .task-details-btns button {
+    @apply w-32 
+    bg-red-100 
+    p-2 
+    flex
+    gap-2 
+    items-center
+    text-lg 
+    rounded-md 
+    shadow-md 
+    hover:-translate-y-1 
+    transition-all 
+    duration-300 
+    ease-in-out 
+    cursor-pointer;
+}
+
+.task-details-modal #editTaskBtn {
+    @apply bg-slate-300 
+    font-medium;
+}
+
+.task-details-modal #deleteTaskBtn {
+    @apply bg-red-600 
+    text-white 
+    font-medium;
+}
+
+
+/* edit task modal */
+.main-content .edit-task-modal {
+    @apply bg-white 
+    border
+    border-slate-300 
+    p-5 
+    text-sm 
+    rounded-lg 
+    shadow-md 
+    container 
+    max-w-xl 
+    mx-auto 
+    fixed 
+    top-1/2 
+    left-1/2 
+    -translate-x-1/2 
+    -translate-y-1/2 
+    z-50;
+}
+
+/* edit task modal header */
+.main-content .edit-task-modal .header {
+    @apply flex 
+    justify-between 
+    p-2 
+    items-center 
+    mb-2;
+}
+
+/* edit task heading */
+.main-content .edit-task-modal .header p {
+    @apply text-xl 
+    font-bold;
+}
+
+/* edit task form close button */
+.main-content .edit-task-modal #editTaskFormCloseBtn {
+    @apply cursor-pointer 
+    text-lg 
+    hover:text-red-600 
+    transition-all 
+    duration-200 
+    ease-in-out;
+}
+
+/* form */
+.main-content .edit-task-modal form {
+    @apply flex 
+    flex-col 
+    gap-3;
+}
+
+/* form divs */
+.main-content .edit-task-modal form div {
+    @apply flex 
+    flex-col;
+}
+
+/* form labels */
+.main-content .edit-task-modal form div label {
+    @apply font-medium;
+}
+
+/* input fields */
+.main-content .edit-task-modal #edit-task-title, #edit-task-description, #edit-category, #edit-priority, #edit-due-date, #edit-task-status {
+    @apply bg-slate-50  
+    p-1 
+    border 
+    border-slate-300 
+    rounded-md 
+    focus:outline-none 
+    cursor-pointer;
+}
+
+/* error message */
+.main-content .edit-form-error {
+    @apply text-red-600 
+    font-bold text-lg;
+}
+
+.main-content .edit-task-modal form .form-action-btns {
+    @apply w-full 
+    md:flex-row 
+    gap-2;
+}
+
+.main-content .edit-task-modal #editSave {
+    @apply bg-blue-700 
+    hover:bg-blue-600;
+}
+
+.main-content .edit-task-modal #editCancel {
+    @apply bg-red-600 
+    hover:bg-red-500;
+}
+
+
+
+/* task delete confirmation modal */
+.confirm-delete-task-modal {
+    @apply bg-white
+    border
+    border-slate-300
+    p-5 
+    container 
+    max-w-2xl 
+    mx-auto 
+    rounded-lg 
+    shadow-md 
+    fixed 
+    top-1/2 
+    left-1/2 
+    -translate-x-1/2 
+    -translate-y-1/2 
+    z-50;
+}
+
+.confirm-delete-task-modal .confirm-delete-task-btns {
+    @apply flex 
+    gap-3;
+}
+
+.confirm-delete-task-btns button {
+    @apply font-medium 
+    w-28 
+    p-1 
+    rounded-md 
+    shadow-sm 
+    cursor-pointer 
+    hover:-translate-y-1 
+    transition-all 
+    duration-300 
+    ease-in-out;
+}
+
+.confirm-delete-task-modal #confirmDeleteBtn {
+    @apply bg-red-600 
+    text-white;
+}
+
+.confirm-delete-task-modal #cancelConfirmDeleteBtn {
+    @apply bg-slate-300;
 }
