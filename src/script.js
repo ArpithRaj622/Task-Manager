@@ -58,6 +58,16 @@ const addTaskFormError = document.querySelector("#addTaskFormError");
 // task add success message
 const addTaskSuccessMsg = document.querySelector("#addTaskSuccessMsg");
 
+// summary cards count
+// total tasks count
+const totalTasksCount = document.querySelector("#totalTasksCount");
+// pendin tasks count
+const pendingTasksCount = document.querySelector("#pendingTasksCount");
+// in-progress tasks count
+const  inProgressTasksCount = document.querySelector("#inProgressTasksCount");
+// completed tasks count
+const completedTasksCount = document.querySelector("#completedTasksCount");
+
 
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
@@ -78,7 +88,6 @@ const tasksArray = tasksArrayString === null? [] : JSON.parse(tasksArrayString);
 function toggleTheme() {
     document.documentElement.classList.toggle("dark");
 }
-
 // function - update theme icon
 function updateThemeIcon() {
     const isDark = document.documentElement.classList.contains("dark");
@@ -134,7 +143,27 @@ function taskAddSuccess() {
     setTimeout(() => {
         addTaskSuccessMsg.classList.add("opacity-0");
     }, 3000);
-} 
+}
+
+// function - get summary count
+function getSummaryCardsCount() {
+    // total tasks count
+    totalTasksCount.textContent = tasksArray.length;
+
+    // pending tasks count
+    pendingTasksCount.textContent = tasksArray.filter((task) => task.status === "pending").length;
+
+    // in-progress tasks count
+    inProgressTasksCount.textContent =  tasksArray.filter((task) => task.status === "in-progress").length;
+
+    // completed tasks count
+    completedTasksCount.textContent = tasksArray.filter((task) => task.status === "completed").length;
+}
+
+// function - render
+function render() {
+    getSummaryCardsCount();
+}
 
 // 
 // Functions end
@@ -225,6 +254,7 @@ addTaskForm.addEventListener("submit", (event) => {
 
     closeAddTaskModal();
     taskAddSuccess();
+    render();
 });
 
 // 
@@ -240,5 +270,6 @@ if (savedTheme === "dark") {
     document.documentElement.classList.add("dark");
 }
 updateThemeIcon();
+render();
 
 console.log(tasksArray);

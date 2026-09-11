@@ -258,7 +258,9 @@ aside {
 .add-task-modal #addTaskForm {
     @apply flex 
     flex-col 
-    gap-3;
+    gap-3
+    max-h-[calc(100vh-100px)]
+    overflow-y-auto;
 }
 
 .add-task-modal #addTaskForm div {
