@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- header -->
     <header>
@@ -93,12 +95,12 @@
             </button>
         </div>
 
-        <!-- add task modal -->
-        <div class="add-task-modal hidden">
+        <!-- add task modal  -->
+        <div class="add-task-modal -translate-y-full" id="addTaskModal">
             <!-- form header -->
             <div class="header" id="addTaskForm">
                 <p>Add Task</p>
-                <button class="form-close-btn" id="addTaskFormCloseBtn">
+                <button class="form-close-btn" id="addTaskModalCloseBtn">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -153,10 +155,10 @@
                 </div>
                 <!-- buttons -->
                 <div class="form-action-btns">
-                    <button type="submit" id="taskAdd">
+                    <button type="submit" id="taskAddBtn">
                         Add Task
                     </button>
-                    <button type="button" id="taskCancel">
+                    <button type="button" id="taskCancelBtn">
                         Cancel
                     </button>
                 </div>

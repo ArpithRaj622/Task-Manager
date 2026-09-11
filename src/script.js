@@ -27,6 +27,16 @@ const closeMobileMenuBtn = document.querySelector("#closeMobileMenuBtn");
 // mobile menu
 const mobileMenu = document.querySelector("#mobileMenu");
 
+// open add task modal button
+const addTaskBtn = document.querySelector("#addTaskBtn");
+// close add task modal button
+const addTaskModalCloseBtn = document.querySelector("#addTaskModalCloseBtn");
+// task cancel Button
+const taskCancelBtn = document.querySelector("#taskCancelBtn");
+// task modal
+const addTaskModal = document.querySelector("#addTaskModal");
+
+
 // 
 // Variables end
 // 
@@ -77,6 +87,17 @@ function deactivateBgCover() {
     body.classList.remove("overflow-hidden");
 }
 
+// function - open add task modal
+function openAddTaskModal() {
+    addTaskModal.classList.remove("-translate-y-full");
+    activateBgCover();
+}
+// function - close add task modal
+function closeAddTaskModal() {
+    addTaskModal.classList.add("-translate-y-full");
+    deactivateBgCover();
+}
+
 // 
 // Functions end
 // 
@@ -91,6 +112,7 @@ function deactivateBgCover() {
 backgroundCover.addEventListener("click", () => {
     deactivateBgCover();
     closeMobileMenu();
+    closeAddTaskModal();
 });
 
 // event listener - theme toggle
@@ -123,6 +145,13 @@ closeMobileMenuBtn.addEventListener("click", () => {
     closeMobileMenu();
     deactivateBgCover();
 });
+
+// event listener - open add task modal
+addTaskBtn.addEventListener("click", openAddTaskModal);
+// event listener - close add task modal
+addTaskModalCloseBtn.addEventListener("click", closeAddTaskModal);
+// event listener - cancel add task
+taskCancelBtn.addEventListener("click", closeAddTaskModal);
 
 // 
 // Event Listeners end

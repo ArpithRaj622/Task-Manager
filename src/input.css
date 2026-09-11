@@ -219,14 +219,18 @@ aside {
     rounded-lg 
     shadow-md 
     container 
-    max-w-xl 
-    mx-auto 
-    fixed 
-    top-1/2 
-    left-1/2 
-    -translate-x-1/2 
-    -translate-y-1/2 
-    z-50;
+    max-w-lg
+    fixed
+    top-0
+    left-0
+    md:left-1/2
+    md:-translate-x-1/2
+    z-50
+    transition-transform 
+    duration-700 
+    ease-in-out
+    dark:bg-slate-700
+    dark:border-slate-600;
 }
 
 .add-task-modal .header {
@@ -242,7 +246,7 @@ aside {
     font-bold;
 }
 
-.add-task-modal #addTaskFormCloseBtn {
+.add-task-modal #addTaskModalCloseBtn {
     @apply cursor-pointer 
     text-lg 
     hover:text-red-600 
@@ -273,7 +277,9 @@ aside {
     border-slate-300 
     rounded-md 
     focus:outline-none 
-    cursor-pointer;
+    cursor-pointer
+    dark:bg-slate-600
+    dark:border-slate-500;
 }
 
 .form-error {
@@ -302,12 +308,12 @@ aside {
     rounded-md;
 }
 
-.form-action-btns #taskAdd {
+.form-action-btns #taskAddBtn {
     @apply bg-blue-700 
     hover:bg-blue-600;
 }
 
-.form-action-btns #taskCancel {
+.form-action-btns #taskCancelBtn {
     @apply bg-red-600 
     hover:bg-red-500
 }
