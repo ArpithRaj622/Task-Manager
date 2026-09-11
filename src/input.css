@@ -111,8 +111,8 @@ h1 {
     bg-white  
     shadow-xl 
     p-2 
-    transition-transform 
-    duration-500 
+    transition-all 
+    duration-700 
     ease-in-out
     lg:translate-x-full
     dark:bg-slate-800
@@ -226,7 +226,7 @@ aside {
     md:left-1/2
     md:-translate-x-1/2
     z-50
-    transition-transform 
+    transition-all 
     duration-700 
     ease-in-out
     dark:bg-slate-700
@@ -255,22 +255,28 @@ aside {
     ease-in-out;
 }
 
-.add-task-modal form {
+.add-task-modal #addTaskForm {
     @apply flex 
     flex-col 
     gap-3;
 }
 
-.add-task-modal form div {
+.add-task-modal #addTaskForm div {
     @apply flex 
     flex-col;
 }
 
-.add-task-modal form div label {
+.add-task-modal #addTaskForm div label {
     @apply font-medium;
 }
 
-.add-task-modal form #task-title, #task-description, #category, #priority, #due-date, #task-status {
+.add-task-modal #addTaskForm div .desc-optional {
+    @apply text-xs
+    text-slate-400;
+}
+
+
+.add-task-modal #addTaskForm #addTaskTitle, #addTaskDescription, #addCategory, #addPriority, #addDueDate, #addTaskStatus {
     @apply bg-slate-50 
     p-1
     border 
@@ -282,16 +288,16 @@ aside {
     dark:border-slate-500;
 }
 
-.form-error {
+.add-task-modal .form-error {
     @apply text-red-600
-    font-bold
+    font-semibold
     text-lg;
 }
 
-.add-task-modal form .form-action-btns {
+.add-task-modal #addTaskForm .form-action-btns {
     @apply w-full 
     md:flex-row 
-    gap-2;
+    gap-4;
 }
 
 .form-action-btns button {
@@ -314,8 +320,41 @@ aside {
 }
 
 .form-action-btns #taskCancelBtn {
-    @apply bg-red-600 
-    hover:bg-red-500
+    @apply bg-red-500 
+    hover:bg-red-400
+}
+
+
+
+/* task add success modal */
+.add-task-success-modal {
+    @apply pointer-events-none
+    container
+    w-62
+    rounded-lg
+    shadow-md
+    p-5
+    text-sm
+    font-semibold
+    flex
+    items-center
+    gap-1
+    bg-white
+    border
+    border-slate-300
+    dark:bg-slate-600
+    dark:border-slate-400
+    fixed
+    top-5
+    left-1/2
+    -translate-x-1/2
+    z-50
+    transition-opacity 
+    duration-300
+    ease-in-out;
+}
+.add-task-success-modal i {
+    @apply text-lg;
 }
 
 
@@ -420,7 +459,9 @@ aside {
     hover:scale-102 
     transition-all 
     duration-300 
-    ease-in-out;
+    ease-in-out
+    dark:bg-slate-700
+    dark:border-slate-600;
 }
 
 .card-title-status {

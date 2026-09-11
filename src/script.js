@@ -36,6 +36,33 @@ const taskCancelBtn = document.querySelector("#taskCancelBtn");
 // task modal
 const addTaskModal = document.querySelector("#addTaskModal");
 
+// add task form
+const addTaskForm = document.querySelector("#addTaskForm");
+
+// add task input fields
+// title
+const addTaskTitle = document.querySelector("#addTaskTitle");
+// description
+const addTaskDescription = document.querySelector("#addTaskDescription");
+// category
+const addCategory = document.querySelector("#addCategory");
+// priority
+const addPriority = document.querySelector("#addPriority");
+// due date
+const addDueDate = document.querySelector("#addDueDate");
+// task status
+const addTaskStatus = document.querySelector("#addTaskStatus");
+// add task form error
+const addTaskFormError = document.querySelector("#addTaskFormError");
+
+// task add success message
+const addTaskSuccessMsg = document.querySelector("#addTaskSuccessMsg");
+
+
+// tasks array
+const tasksArrayString = localStorage.getItem("all-tasks");
+const tasksArray = tasksArrayString === null? [] : JSON.parse(tasksArrayString);
+
 
 // 
 // Variables end
@@ -68,10 +95,12 @@ function updateThemeIcon() {
 // function - open mobile menu
 function openMobileMenu() {
     mobileMenu.classList.remove("translate-x-full");
+    mobileMenu.classList.remove("opacity-0");
 }
 // function - close mobile menu
 function closeMobileMenu() {
     mobileMenu.classList.add("translate-x-full");
+    mobileMenu.classList.add("opacity-0");
 }
 
 // function - activate background cover
@@ -90,13 +119,22 @@ function deactivateBgCover() {
 // function - open add task modal
 function openAddTaskModal() {
     addTaskModal.classList.remove("-translate-y-full");
+    addTaskModal.classList.remove("opacity-0");
     activateBgCover();
 }
 // function - close add task modal
 function closeAddTaskModal() {
     addTaskModal.classList.add("-translate-y-full");
+    addTaskModal.classList.add("opacity-0");
     deactivateBgCover();
 }
+// function - show add task success message
+function taskAddSuccess() {
+    addTaskSuccessMsg.classList.remove("opacity-0");
+    setTimeout(() => {
+        addTaskSuccessMsg.classList.add("opacity-0");
+    }, 3000);
+} 
 
 // 
 // Functions end
@@ -153,6 +191,42 @@ addTaskModalCloseBtn.addEventListener("click", closeAddTaskModal);
 // event listener - cancel add task
 taskCancelBtn.addEventListener("click", closeAddTaskModal);
 
+// event listener - add task form submit
+addTaskForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // input values
+    const taskTitle = addTaskTitle.value.trim();
+    const taskDescription = addTaskDescription.value.trim();
+    const taskCategory = addCategory.value;
+    const taskPriority = addPriority.value;
+    const taskDueDate = addDueDate.value;
+    const taskStatus = addTaskStatus.value;
+
+    if (taskTitle === "" || taskDueDate === "") {
+        addTaskFormError.classList.remove("hidden");
+        return;
+    }
+    
+    const task = {
+        title : taskTitle,
+        description : taskDescription,
+        category : taskCategory,
+        priority : taskPriority,
+        dueDate : taskDueDate,
+        status : taskStatus
+    };
+
+    tasksArray.push(task);
+    const tasksArrayString = JSON.stringify(tasksArray);
+    localStorage.setItem("all-tasks", tasksArrayString);
+
+    addTaskForm.reset();
+
+    closeAddTaskModal();
+    taskAddSuccess();
+});
+
 // 
 // Event Listeners end
 // 
@@ -166,3 +240,5 @@ if (savedTheme === "dark") {
     document.documentElement.classList.add("dark");
 }
 updateThemeIcon();
+
+console.log(tasksArray);
