@@ -27,6 +27,7 @@ const closeMobileMenuBtn = document.querySelector("#closeMobileMenuBtn");
 // mobile menu
 const mobileMenu = document.querySelector("#mobileMenu");
 
+// add task modal
 // open add task modal button
 const addTaskBtn = document.querySelector("#addTaskBtn");
 // close add task modal button
@@ -68,6 +69,8 @@ const  inProgressTasksCount = document.querySelector("#inProgressTasksCount");
 // completed tasks count
 const completedTasksCount = document.querySelector("#completedTasksCount");
 
+// tasks card container
+const tasksContainer = document.querySelector("#tasksContainer");
 
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
@@ -145,7 +148,7 @@ function taskAddSuccess() {
     }, 3000);
 }
 
-// function - get summary count
+// function - get summary cards count
 function getSummaryCardsCount() {
     // total tasks count
     totalTasksCount.textContent = tasksArray.length;
@@ -160,9 +163,68 @@ function getSummaryCardsCount() {
     completedTasksCount.textContent = tasksArray.filter((task) => task.status === "completed").length;
 }
 
-// function - render
+// function - create task card
+function createTaskCard(task) {
+    // task card
+    const taskCard = document.createElement("div");
+    taskCard.classList.add("task-card");
+
+    // task card title & status container
+    const cardTitleStatus = document.createElement("div");
+    cardTitleStatus.classList.add("card-title-status");
+
+    // task card title
+    const cardTitle = document.createElement("p");
+    cardTitle.classList.add("card-title");
+    cardTitle.textContent = task.title;
+
+    // task card status
+    const cardStatus = document.createElement("p");
+    cardStatus.classList.add("card-status");
+    if (task.status === "pending") {
+        cardStatus.textContent = "Pending";
+        cardStatus.classList.add("bg-red-500");
+    } else if (task.status === "in-progress") {
+        cardStatus.textContent = "In Progress";
+        cardStatus.classList.add("bg-amber-500");
+    } else if (task.status === "completed") {
+        cardStatus.textContent = "Completed";
+        cardStatus.classList.add("bg-green-600");
+    }
+
+    // task due
+    const cardDueDate = document.createElement("p");
+    cardDueDate.classList.add("card-due-date");
+    const formattedDueDate = new Date(task.dueDate).toLocaleDateString("en-US", {
+        month : "short",
+        day : "numeric",
+        year : "numeric"
+    });
+    cardDueDate.textContent = formattedDueDate;
+
+    // cardTitle & cardStatus append into cardTitleStatus
+    cardTitleStatus.append(cardTitle, cardStatus);
+
+    // cardTitleStatus & cardDueDate append into taskCard
+    taskCard.append(cardTitleStatus, cardDueDate);
+
+    // taskCard append into tasksContainer
+    tasksContainer.append(taskCard);
+}
+
+// function - display task cards
+function displayTaskCards() {
+    tasksContainer.innerHTML = "";
+    const latestTasks = tasksArray.slice(-3).reverse();
+    latestTasks.forEach((task) => {
+        createTaskCard(task);
+    });
+}
+
+// function - render tasks
 function render() {
     getSummaryCardsCount();
+    displayTaskCards();
 }
 
 // 
@@ -254,6 +316,7 @@ addTaskForm.addEventListener("submit", (event) => {
 
     closeAddTaskModal();
     taskAddSuccess();
+    createTaskCard(task);
     render();
 });
 
@@ -270,6 +333,6 @@ if (savedTheme === "dark") {
     document.documentElement.classList.add("dark");
 }
 updateThemeIcon();
-render();
 
-console.log(tasksArray);
+// render tasks
+render();

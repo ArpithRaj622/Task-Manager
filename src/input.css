@@ -220,6 +220,7 @@ aside {
     shadow-md 
     container 
     max-w-lg
+    mt-2
     fixed
     top-0
     left-0
@@ -471,23 +472,22 @@ aside {
     justify-between;
 }
 
-.card-title-status .title {
-    @apply text-sm 
-    font-medium;
+.card-title-status .card-title {
+    @apply font-semibold;
 }
 
-.card-title-status .status {
+.card-title-status .card-status {
     @apply text-xs 
     px-2 
     py-1 
-    text-white 
+    text-white
     rounded-2xl 
     w-24 
     text-center 
     font-medium;
 }
 
-.task-card .due-date {
+.task-card .card-due-date {
     @apply text-sm 
     mt-2 
     text-slate-400;
