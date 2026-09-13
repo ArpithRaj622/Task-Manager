@@ -96,8 +96,38 @@ const deleteTaskBtn = document.querySelector("#deleteTaskBtn");
 const taskDetailsCloseBtn = document.querySelector("#taskDetailsCloseBtn");
 // task completed checkbox
 const taskCompletedCheckbox = document.querySelector("#taskCompletedCheckbox");
+
 // selected task when clicked
 let selectedTask = null;
+
+// edit task modal
+const editTaskModal = document.querySelector("#editTaskModal");
+// edit task modal close button
+const editTaskCloseBtn = document.querySelector("#editTaskCloseBtn");
+// edit task form
+const editTaskForm = document.querySelector("#editTaskForm");
+// edit task title
+const editTaskTitle = document.querySelector("#editTaskTitle");
+// edit task description
+const editTaskDescription = document.querySelector("#editTaskDescription");
+// edit category
+const editCategory = document.querySelector("#editCategory");
+// edit priority
+const editPriority = document.querySelector("#editPriority");
+// edit due date
+const editDueDate = document.querySelector("#editDueDate");
+// edit task status
+const editTaskStatus = document.querySelector("#editTaskStatus");
+
+// edit task save button
+const editSaveBtn = document.querySelector("#editSaveBtn");
+// edit task cancel button
+const editCancelBtn = document.querySelector("#editCancelBtn");
+// edit task form error
+const editTaskFormError = document.querySelector("#editTaskFormError");
+// edit successfull message
+const editTaskSuccessMsg = document.querySelector("#editTaskSuccessMsg");
+
 
 // delete task confimation modal
 const confirmDeleteTaskModal = document.querySelector("#confirmDeleteTaskModal");
@@ -263,6 +293,7 @@ function displayTaskCards() {
     });
 }
 
+// task details modal
 // function - open task details modal
 function showTaskDetails(task, dueDate) {
     taskDetailsTitle.textContent = task.title;
@@ -293,6 +324,29 @@ function closeTaskDetails() {
     deactivateBgCover();
 }
 
+// edit task modal
+// function - open edit task modal
+function openEditTaskModal() {
+    closeTaskDetails();
+    activateBgCover();
+    editTaskModal.classList.remove("-translate-y-full");
+    editTaskModal.classList.remove("opacity-0");
+}
+// function - close edit task modal
+function closeEditTaskModal() {
+    deactivateBgCover();
+    editTaskModal.classList.add("-translate-y-full");
+    editTaskModal.classList.add("opacity-0");
+}
+// function - task edit success message
+function taskEditSuccess() {
+    editTaskSuccessMsg.classList.remove("opacity-0");
+    setTimeout(() => {
+        editTaskSuccessMsg.classList.add("opacity-0");
+    }, 3000);
+}
+
+// delete confirmation modal
 // function - open delete confirmation modal
 function openDeleteConfirm() {
     closeTaskDetails();
@@ -306,7 +360,6 @@ function closeDeleteConfirm() {
     confirmDeleteTaskModal.classList.add("opacity-0");
     confirmDeleteTaskModal.classList.add("pointer-events-none");
 }
-
 // function - show delete task success message
 function taskDeleteSuccess() {
     deleteTaskSuccessMsg.classList.remove("opacity-0");
@@ -337,6 +390,7 @@ backgroundCover.addEventListener("click", () => {
     closeMobileMenu();
     closeAddTaskModal();
     closeTaskDetails();
+    closeEditTaskModal();
     closeDeleteConfirm();
 });
 
@@ -420,7 +474,8 @@ addTaskForm.addEventListener("submit", (event) => {
 
 // task details modal
 // event listener - close task details modal
-taskDetailsCloseBtn.addEventListener("click", closeTaskDetails); 
+taskDetailsCloseBtn.addEventListener("click", closeTaskDetails);
+
 // event listener - click task completed
 taskCompletedCheckbox.addEventListener("change", () => {
     if (taskCompletedCheckbox.checked === true) {
@@ -439,12 +494,65 @@ taskCompletedCheckbox.addEventListener("change", () => {
         render();
     }
 });
+
+// edit task modal
+// event listener - edit task button
+editTaskBtn.addEventListener("click", () => {
+    openEditTaskModal();
+
+    editTaskTitle.value = selectedTask.title;
+    editTaskDescription.value = selectedTask.description;
+    editCategory.value = selectedTask.category;
+    editPriority.value = selectedTask.priority;
+    editDueDate.value = selectedTask.dueDate;
+    editTaskStatus.value = selectedTask.status;
+});
+// event listener - edit task form submit button
+editTaskForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // input values
+    const taskTitle = editTaskTitle.value.trim();
+    const taskDescription = editTaskDescription.value.trim();
+    const taskCategory = editCategory.value;
+    const taskPriority = editPriority.value;
+    const taskDueDate = editDueDate.value;
+    const taskStatus = editTaskStatus.value;
+
+    if (taskTitle === "" || taskDueDate === "") {
+        editTaskFormError.classList.remove("hidden");
+        return;
+    }
+    
+    editedTask = {
+        title : taskTitle,
+        description : taskDescription,
+        category : taskCategory,
+        priority : taskPriority,
+        dueDate : taskDueDate,
+        status : taskStatus,
+        previousStatus : taskStatus
+    };
+
+    tasksArray.splice(tasksArray.indexOf(selectedTask), 1, editedTask);
+    const tasksArrayString = JSON.stringify(tasksArray);
+    localStorage.setItem("all-tasks", tasksArrayString);
+
+    editTaskForm.reset();
+
+    closeEditTaskModal();
+    taskEditSuccess();
+    render();
+});
+// event listener - cancel edit task modal
+editCancelBtn.addEventListener("click", closeEditTaskModal);
+// event-listener - close edit task modal
+editTaskCloseBtn.addEventListener("click", closeEditTaskModal);
+
+// delete task
 // event listener - delete task button
 deleteTaskBtn.addEventListener("click", openDeleteConfirm);
-
-
-
-// event llistener - confirm delete
+// event listener - confirm delete
 confirmDeleteBtn.addEventListener("click", () => {
     tasksArray.splice(tasksArray.indexOf(selectedTask), 1);
 

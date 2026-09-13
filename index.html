@@ -269,31 +269,31 @@
         </div>
 
         <!-- edit task modal -->
-        <div class="edit-task-modal hidden">
+        <div class="edit-task-modal opacity-0 -translate-y-full" id="editTaskModal">
             <!-- header -->
             <div class="header">
                 <p>Edit Task</p>
-                <button class="form-close-btn" id="editTaskFormCloseBtn">
+                <button class="form-close-btn" id="editTaskCloseBtn">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
             <!-- form -->
-            <form action="">
+            <form action="" id="editTaskForm">
                 <!-- title -->
                 <div>
-                    <label for="edit-task-title">Task Title:</label>
-                    <input type="text"name="taskTitle" placeholder="Enter task title" id="edit-task-title">
+                    <label for="task-title">Task Title:</label>
+                    <input type="text" name="taskTitle" id="editTaskTitle">
                 </div>
                 <!-- description -->
                 <div>
-                    <label for="edit-task-description">Description:</label>
-                    <textarea name="taskDescription" id="edit-task-description" placeholder="Description..."></textarea>
+                    <label for="task-description">Description: <span class="desc-optional">(optional)</span></label>
+                    <textarea name="taskDescription" id="editTaskDescription"></textarea>
                 </div>
                 <!-- category -->
                 <div>
-                    <label for="edit-category">Select Category:</label>
-                    <select name="category" id="edit-category">
+                    <label for="category">Select Category:</label>
+                    <select name="category" id="editCategory">
                         <option value="work">Work</option>
                         <option value="personal">Personal</option>
                         <option value="study">Study</option>
@@ -301,8 +301,8 @@
                 </div>
                 <!-- priority -->
                 <div>
-                    <label for="edit-priority">Priority:</label>
-                    <select name="priority" id="edit-priority">
+                    <label for="priority">Priority:</label>
+                    <select name="priority" id="editPriority">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
@@ -310,32 +310,37 @@
                 </div>
                 <!-- due date -->
                 <div>
-                    <label for="edit-due-date">Due date:</label> 
-                    <input type="date" name="dueDate" id="edit-due-date">
+                    <label for="due-date">Due date:</label> 
+                    <input type="date" name="dueDate" id="editDueDate">
                 </div>
                 <!-- status -->
                 <div>
-                    <label for="edit-task-status">Status:</label>
-                    <select name="taskStatus" id="edit-task-status">
+                    <label for="status">Status:</label>
+                    <select name="taskStatus" id="editTaskStatus">
                         <option value="pending">Pending</option>
                         <option value="in-progress">In Progress</option>
-                        <option value="completed">Completed</option>
                     </select>
                 </div>
                 <!-- form error message -->
                 <div>
-                    <p class="form-error hidden">Please fill in all required fields.</p>
+                    <p class="form-error hidden" id="editTaskFormError">Please fill in all required fields.</p>
                 </div>
                 <!-- buttons -->
                 <div class="form-action-btns">
-                    <button type="submit" id="editSave">
+                    <button type="submit" id="editSaveBtn">
                         Save
                     </button>
-                    <button type="button" id="editCancel">
+                    <button type="button" id="editCancelBtn">
                         Cancel
                     </button>
                 </div>
             </form>
+        </div>
+
+        <!-- edit task successfully modal -->
+        <div class="edit-task-success-modal opacity-0" id="editTaskSuccessMsg">
+            <i class="fa-solid fa-circle-check text-green-600"></i>
+            <p>Task Updated successfully!</p>
         </div>
 
         <!-- delete task confirmation modal -->
@@ -350,6 +355,7 @@
             </div>
         </div>
 
+        <!-- delete task successfull modal -->
         <div class="delete-task-success-modal opacity-0" id="deleteTaskSuccessMsg">
             <i class="fa-solid fa-circle-check text-green-600"></i>
             <p>Task deleted successfully!</p>
