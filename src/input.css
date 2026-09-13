@@ -519,15 +519,21 @@ aside {
     border-slate-300
     shadow-md 
     rounded-lg 
-    p-4 container 
-    max-w-4xl 
-    mx-auto 
+    p-4 
+    container 
+    w-86
+    md:w-xl
     fixed 
-    top-1/2 
-    left-1/2 
-    -translate-x-1/2 
-    -translate-y-1/2 
-    z-50;
+    top-1/2
+    -translate-y-1/2
+    left-1/2
+    -translate-x-1/2
+    z-50
+    transition-all
+    duration-500
+    ease-in-out
+    dark:bg-slate-700
+    dark:border-slate-600;
 }
 
 .task-details-modal #taskDetailsCloseBtn {
@@ -538,17 +544,23 @@ aside {
 .task-details-modal .task-details {
     @apply flex 
     flex-col 
-    gap-2;
+    gap-2
+    mb-4;
 }
 
-.task-details-modal .task-details .title {
+.task-details-modal .task-details-title-description {
+    @apply mb-2;
+}
+
+.task-details-modal .task-details-title {
     @apply font-bold 
     text-lg;
 }
 
-.task-details-modal .task-details .description {
-    @apply text-sm 
-    font-light;
+.task-details-modal .mark-as-complete {
+    @apply flex
+    gap-2
+    items-center;
 }
 
 .task-details-modal .task-details-btns {
@@ -576,7 +588,8 @@ aside {
 
 .task-details-modal #editTaskBtn {
     @apply bg-slate-300 
-    font-medium;
+    font-medium
+    dark:bg-slate-500;
 }
 
 .task-details-modal #deleteTaskBtn {

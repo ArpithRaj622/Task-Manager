@@ -110,12 +110,12 @@
                 <!-- title -->
                 <div>
                     <label for="task-title">Task Title:</label>
-                    <input type="text" name="taskTitle" placeholder="Enter task title" id="addTaskTitle">
+                    <input type="text" name="taskTitle" id="addTaskTitle">
                 </div>
                 <!-- description -->
                 <div>
                     <label for="task-description">Description: <span class="desc-optional">(optional)</span></label>
-                    <textarea name="taskDescription" placeholder="Description..." id="addTaskDescription"></textarea>
+                    <textarea name="taskDescription" id="addTaskDescription"></textarea>
                 </div>
                 <!-- category -->
                 <div>
@@ -146,7 +146,6 @@
                     <select name="taskStatus" id="addTaskStatus">
                         <option value="pending">Pending</option>
                         <option value="in-progress">In Progress</option>
-                        <option value="completed">Completed</option>
                     </select>
                 </div>
                 <!-- form error message -->
@@ -234,7 +233,7 @@
         </div>
 
         <!-- task details modal -->
-        <div class="task-details-modal hidden">
+        <div class="task-details-modal opacity-0 pointer-events-none">
             <!-- close button -->
             <div class="text-right">
                 <button aria-label="Close task details" id="taskDetailsCloseBtn">
@@ -243,14 +242,18 @@
             </div>
             <!-- task details -->
             <div class="task-details">
-                <div>
-                    <p class="title"></p>
-                    <p class="description"></p>
+                <div class="task-details-title-description">
+                    <p class="task-details-title" id="taskDetailsTitle"></p>
+                    <p id="taskDetailsDescription"></p>
                 </div>
-                <p class="category"></p>
-                <p class="priority"></p>
-                <p class="due-date"></p>
-                <p class="status"></p>
+                <p id="taskDetailsCategory"></p>
+                <p id="taskDetailsPriority"></p>
+                <p id="taskDetailsDueDate"></p>
+                <p id="taskDetailsStatus"></p>
+            </div>
+            <div class="mark-as-complete">
+                <input type="checkbox" id="taskCompletedCheckbox">
+                <p>Mark as Completed</p>
             </div>
             <!-- buttons -->
             <div class="task-details-btns">

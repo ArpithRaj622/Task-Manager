@@ -72,6 +72,33 @@ const completedTasksCount = document.querySelector("#completedTasksCount");
 // tasks card container
 const tasksContainer = document.querySelector("#tasksContainer");
 
+// task details
+// task details modal 
+const taskDetailsModal = document.querySelector(".task-details-modal");
+// task details title
+const taskDetailsTitle = document.querySelector("#taskDetailsTitle");
+// task details description
+const taskDetailsDescription = document.querySelector("#taskDetailsDescription");
+// task details category
+const taskDetailsCategory = document.querySelector("#taskDetailsCategory");
+// task details priority
+const taskDetailsPriority = document.querySelector("#taskDetailsPriority");
+// tasks details due date
+const taskDetailsDueDate = document.querySelector("#taskDetailsDueDate");
+// task details status
+const taskDetailsStatus = document.querySelector("#taskDetailsStatus");
+// buttons inside task details modal
+// edit task button
+const editTaskBtn = document.querySelector("#editTaskBtn");
+// delete task button
+const deleteTaskBtn = document.querySelector("#deleteTaskBtn");
+// close task details modal button
+const taskDetailsCloseBtn = document.querySelector("#taskDetailsCloseBtn");
+// task completed checkbox
+const taskCompletedCheckbox = document.querySelector("#taskCompletedCheckbox");
+// selected task when clicked
+let selectedTask = null;
+
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
 const tasksArray = tasksArrayString === null? [] : JSON.parse(tasksArrayString);
@@ -138,6 +165,7 @@ function openAddTaskModal() {
 function closeAddTaskModal() {
     addTaskModal.classList.add("-translate-y-full");
     addTaskModal.classList.add("opacity-0");
+    addTaskFormError.classList.add("hidden");
     deactivateBgCover();
 }
 // function - show add task success message
@@ -190,7 +218,7 @@ function createTaskCard(task) {
     } else if (task.status === "completed") {
         cardStatus.textContent = "Completed";
         cardStatus.classList.add("bg-green-600");
-    }
+    } 
 
     // task due
     const cardDueDate = document.createElement("p");
@@ -210,15 +238,50 @@ function createTaskCard(task) {
 
     // taskCard append into tasksContainer
     tasksContainer.append(taskCard);
+
+    // event listener - click to open task details modal
+    taskCard.addEventListener("click", () => {
+        showTaskDetails(task, formattedDueDate);
+    });
 }
 
-// function - display task cards
+// function - display 3 latest task cards
 function displayTaskCards() {
     tasksContainer.innerHTML = "";
     const latestTasks = tasksArray.slice(-3).reverse();
     latestTasks.forEach((task) => {
         createTaskCard(task);
     });
+}
+
+// function - open task details modal
+function showTaskDetails(task, dueDate) {
+    taskDetailsTitle.textContent = task.title;
+    taskDetailsDescription.textContent = task.description;
+    taskDetailsCategory.textContent = `Category : ${task.category}`;
+    taskDetailsPriority.textContent = `Priority : ${task.priority}`;
+    taskDetailsDueDate.textContent = `Due date : ${dueDate}`;
+    taskDetailsStatus.textContent = `Status : ${task.status}`;
+
+    taskDetailsModal.classList.remove("opacity-0");
+    taskDetailsModal.classList.remove("pointer-events-none");
+    activateBgCover();
+
+    if (task.status === "completed") {
+        taskCompletedCheckbox.checked = true;
+    } else if (task.status === "pending") {
+        taskCompletedCheckbox.checked = false;
+    } else if (task.status === "in-progress") {
+        taskCompletedCheckbox.checked = false;
+    }
+
+    selectedTask = task;
+}
+// function - close task details modal
+function closeTaskDetails() {
+    taskDetailsModal.classList.add("opacity-0");
+    taskDetailsModal.classList.add("pointer-events-none");
+    deactivateBgCover();
 }
 
 // function - render tasks
@@ -242,6 +305,7 @@ backgroundCover.addEventListener("click", () => {
     deactivateBgCover();
     closeMobileMenu();
     closeAddTaskModal();
+    closeTaskDetails();
 });
 
 // event listener - theme toggle
@@ -261,6 +325,7 @@ profileBtn.addEventListener("click", () => {
 document.addEventListener("click", (event) => {
     if (profileContainer.contains(event.target) === false) {
         profileDropdown.classList.add("opacity-0");
+        profileDropdown.classList.add("pointer-events-none");
     }
 });
 
@@ -305,7 +370,8 @@ addTaskForm.addEventListener("submit", (event) => {
         category : taskCategory,
         priority : taskPriority,
         dueDate : taskDueDate,
-        status : taskStatus
+        status : taskStatus,
+        previousStatus : taskStatus
     };
 
     tasksArray.push(task);
@@ -319,6 +385,29 @@ addTaskForm.addEventListener("submit", (event) => {
     createTaskCard(task);
     render();
 });
+
+// event listener - close task details modal
+taskDetailsCloseBtn.addEventListener("click", closeTaskDetails); 
+
+// event listener - click task completed
+taskCompletedCheckbox.addEventListener("change", () => {
+    if (taskCompletedCheckbox.checked === true) {
+        selectedTask.status = "completed";
+        taskDetailsStatus.textContent = `Status : ${selectedTask.status}`;
+
+        const tasksArrayString = JSON.stringify(tasksArray);
+        localStorage.setItem("all-tasks", tasksArrayString);
+        render();
+    } else {
+        selectedTask.status = selectedTask.previousStatus;
+        taskDetailsStatus.textContent = `Status : ${selectedTask.status}`;
+
+        const tasksArrayString = JSON.stringify(tasksArray);
+        localStorage.setItem("all-tasks", tasksArrayString);
+        render();
+    }
+});
+
 
 // 
 // Event Listeners end
