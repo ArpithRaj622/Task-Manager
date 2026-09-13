@@ -105,6 +105,8 @@ const confirmDeleteTaskModal = document.querySelector("#confirmDeleteTaskModal")
 const confirmDeleteBtn = document.querySelector("#confirmDeleteBtn");
 // cancel Confirm Delete Button
 const cancelConfirmDeleteBtn = document.querySelector("#cancelConfirmDeleteBtn");
+// task delete success message
+const deleteTaskSuccessMsg = document.querySelector("#deleteTaskSuccessMsg");
 
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
@@ -305,6 +307,14 @@ function closeDeleteConfirm() {
     confirmDeleteTaskModal.classList.add("pointer-events-none");
 }
 
+// function - show delete task success message
+function taskDeleteSuccess() {
+    deleteTaskSuccessMsg.classList.remove("opacity-0");
+    setTimeout(() => {
+        deleteTaskSuccessMsg.classList.add("opacity-0");
+    }, 3000);
+}
+
 // function - render tasks
 function render() {
     getSummaryCardsCount();
@@ -441,6 +451,7 @@ confirmDeleteBtn.addEventListener("click", () => {
     const tasksArrayString = JSON.stringify(tasksArray);
     localStorage.setItem("all-tasks", tasksArrayString);
     closeDeleteConfirm();
+    taskDeleteSuccess();
     render();
 });
 // event listener - cancel confirm delete

@@ -787,7 +787,7 @@ aside {
     max-width: 96rem;
   }
   display: flex;
-  width: calc(var(--spacing) * 62);
+  width: calc(var(--spacing) * 64);
   --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
   translate: var(--tw-translate-x) var(--tw-translate-y);
   align-items: center;
@@ -812,10 +812,10 @@ aside {
   --tw-ease: var(--ease-in-out);
   transition-timing-function: var(--ease-in-out);
   &:where(.dark, .dark *) {
-    border-color: var(--color-slate-400);
+    border-color: var(--color-slate-600);
   }
   &:where(.dark, .dark *) {
-    background-color: var(--color-slate-600);
+    background-color: var(--color-slate-700);
   }
 }
 .add-task-success-modal i {
@@ -1356,6 +1356,64 @@ aside {
   &:where(.dark, .dark *) {
     background-color: var(--color-slate-500);
   }
+}
+.delete-task-success-modal {
+  pointer-events: none;
+  position: fixed;
+  top: calc(var(--spacing) * 5);
+  left: calc(1 / 2 * 100%);
+  z-index: 50;
+  width: 100%;
+  @media (width >= 40rem) {
+    max-width: 40rem;
+  }
+  @media (width >= 48rem) {
+    max-width: 48rem;
+  }
+  @media (width >= 64rem) {
+    max-width: 64rem;
+  }
+  @media (width >= 80rem) {
+    max-width: 80rem;
+  }
+  @media (width >= 96rem) {
+    max-width: 96rem;
+  }
+  display: flex;
+  width: calc(var(--spacing) * 64);
+  --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  align-items: center;
+  gap: var(--spacing);
+  border-radius: var(--radius-lg);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-slate-300);
+  background-color: var(--color-white);
+  padding: calc(var(--spacing) * 5);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
+  --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  transition-property: opacity;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  &:where(.dark, .dark *) {
+    border-color: var(--color-slate-600);
+  }
+  &:where(.dark, .dark *) {
+    background-color: var(--color-slate-700);
+  }
+}
+.delete-task-success-modal i {
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
 }
 @property --tw-translate-x {
   syntax: "*";

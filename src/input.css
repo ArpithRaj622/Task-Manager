@@ -333,7 +333,7 @@ aside {
 .add-task-success-modal {
     @apply pointer-events-none
     container
-    w-62
+    w-64
     rounded-lg
     shadow-md
     p-5
@@ -345,8 +345,8 @@ aside {
     bg-white
     border
     border-slate-300
-    dark:bg-slate-600
-    dark:border-slate-400
+    dark:bg-slate-700
+    dark:border-slate-600
     fixed
     top-5
     left-1/2
@@ -748,4 +748,37 @@ aside {
 .confirm-delete-task-modal #cancelConfirmDeleteBtn {
     @apply bg-slate-300
     dark:bg-slate-500;
+}
+
+
+
+/* task add success modal */
+.delete-task-success-modal {
+    @apply pointer-events-none
+    container
+    w-64
+    rounded-lg
+    shadow-md
+    p-5
+    text-sm
+    font-semibold
+    flex
+    items-center
+    gap-1
+    bg-white
+    border
+    border-slate-300
+    dark:bg-slate-700
+    dark:border-slate-600
+    fixed
+    top-5
+    left-1/2
+    -translate-x-1/2
+    z-50
+    transition-opacity 
+    duration-300
+    ease-in-out;
+}
+.delete-task-success-modal i {
+    @apply text-lg;
 }
