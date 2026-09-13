@@ -99,6 +99,13 @@ const taskCompletedCheckbox = document.querySelector("#taskCompletedCheckbox");
 // selected task when clicked
 let selectedTask = null;
 
+// delete task confimation modal
+const confirmDeleteTaskModal = document.querySelector("#confirmDeleteTaskModal");
+// confirm delete button
+const confirmDeleteBtn = document.querySelector("#confirmDeleteBtn");
+// cancel Confirm Delete Button
+const cancelConfirmDeleteBtn = document.querySelector("#cancelConfirmDeleteBtn");
+
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
 const tasksArray = tasksArrayString === null? [] : JSON.parse(tasksArrayString);
@@ -284,6 +291,20 @@ function closeTaskDetails() {
     deactivateBgCover();
 }
 
+// function - open delete confirmation modal
+function openDeleteConfirm() {
+    closeTaskDetails();
+    activateBgCover();
+    confirmDeleteTaskModal.classList.remove("opacity-0");
+    confirmDeleteTaskModal.classList.remove("pointer-events-none");
+}
+// function - close delete confirmation modal
+function closeDeleteConfirm() {
+    deactivateBgCover();
+    confirmDeleteTaskModal.classList.add("opacity-0");
+    confirmDeleteTaskModal.classList.add("pointer-events-none");
+}
+
 // function - render tasks
 function render() {
     getSummaryCardsCount();
@@ -306,6 +327,7 @@ backgroundCover.addEventListener("click", () => {
     closeMobileMenu();
     closeAddTaskModal();
     closeTaskDetails();
+    closeDeleteConfirm();
 });
 
 // event listener - theme toggle
@@ -340,13 +362,13 @@ closeMobileMenuBtn.addEventListener("click", () => {
     deactivateBgCover();
 });
 
+// add task modal
 // event listener - open add task modal
 addTaskBtn.addEventListener("click", openAddTaskModal);
 // event listener - close add task modal
 addTaskModalCloseBtn.addEventListener("click", closeAddTaskModal);
 // event listener - cancel add task
 taskCancelBtn.addEventListener("click", closeAddTaskModal);
-
 // event listener - add task form submit
 addTaskForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -386,9 +408,9 @@ addTaskForm.addEventListener("submit", (event) => {
     render();
 });
 
+// task details modal
 // event listener - close task details modal
 taskDetailsCloseBtn.addEventListener("click", closeTaskDetails); 
-
 // event listener - click task completed
 taskCompletedCheckbox.addEventListener("change", () => {
     if (taskCompletedCheckbox.checked === true) {
@@ -407,6 +429,22 @@ taskCompletedCheckbox.addEventListener("change", () => {
         render();
     }
 });
+// event listener - delete task button
+deleteTaskBtn.addEventListener("click", openDeleteConfirm);
+
+
+
+// event llistener - confirm delete
+confirmDeleteBtn.addEventListener("click", () => {
+    tasksArray.splice(tasksArray.indexOf(selectedTask), 1);
+
+    const tasksArrayString = JSON.stringify(tasksArray);
+    localStorage.setItem("all-tasks", tasksArrayString);
+    closeDeleteConfirm();
+    render();
+});
+// event listener - cancel confirm delete
+cancelConfirmDeleteBtn.addEventListener("click", closeDeleteConfirm); 
 
 
 // 

@@ -704,16 +704,22 @@ aside {
     border-slate-300
     p-5 
     container 
-    max-w-2xl 
+    w-86
+    md:w-xl
     mx-auto 
     rounded-lg 
     shadow-md 
     fixed 
-    top-1/2 
-    left-1/2 
-    -translate-x-1/2 
-    -translate-y-1/2 
-    z-50;
+    top-1/2
+    -translate-y-1/2
+    left-1/2
+    -translate-x-1/2
+    z-50
+    transition-all
+    duration-500
+    ease-in-out
+    dark:bg-slate-700
+    dark:border-slate-600;
 }
 
 .confirm-delete-task-modal .confirm-delete-task-btns {
@@ -740,5 +746,6 @@ aside {
 }
 
 .confirm-delete-task-modal #cancelConfirmDeleteBtn {
-    @apply bg-slate-300;
+    @apply bg-slate-300
+    dark:bg-slate-500;
 }

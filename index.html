@@ -12,11 +12,11 @@
 
     <link rel="stylesheet" href="./dist/output.css">
 
-    <style>
+    <!-- <style>
         * {
-            /* border: 1px solid red; */
+            border: 1px solid red;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -339,9 +339,9 @@
         </div>
 
         <!-- delete task confirmation modal -->
-        <div class="confirm-delete-task-modal hidden">
+        <div class="confirm-delete-task-modal opacity-0 pointer-events-none" id="confirmDeleteTaskModal">
             <div class="flex flex-col gap-5"> 
-                <p>Delete Task</p>
+                <p class="text-lg font-semibold">Delete Task</p>
                 <p>Are you sure you want to delete this task? This action cannot be undone.</p>
                 <div class="confirm-delete-task-btns">
                     <button class="confirm-delete-btn" id="confirmDeleteBtn">Delete</button>
