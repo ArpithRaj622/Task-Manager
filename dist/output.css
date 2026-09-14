@@ -1169,7 +1169,7 @@ aside {
   }
   margin-inline: auto;
   margin-top: calc(var(--spacing) * 2);
-  max-width: var(--container-xl);
+  max-width: var(--container-lg);
   --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
   translate: var(--tw-translate-x) var(--tw-translate-y);
   border-radius: var(--radius-lg);

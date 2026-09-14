@@ -1,6 +1,6 @@
 // 
 // Variables start
-// 
+//
 
 // body
 const body = document.body;
@@ -26,48 +26,6 @@ const openMobileMenuBtn = document.querySelector("#openMobileMenuBtn");
 const closeMobileMenuBtn = document.querySelector("#closeMobileMenuBtn");
 // mobile menu
 const mobileMenu = document.querySelector("#mobileMenu");
-
-// add task modal
-// open add task modal button
-const addTaskBtn = document.querySelector("#addTaskBtn");
-// close add task modal button
-const addTaskModalCloseBtn = document.querySelector("#addTaskModalCloseBtn");
-// task cancel Button
-const taskCancelBtn = document.querySelector("#taskCancelBtn");
-// task modal
-const addTaskModal = document.querySelector("#addTaskModal");
-
-// add task form
-const addTaskForm = document.querySelector("#addTaskForm");
-
-// add task input fields
-// title
-const addTaskTitle = document.querySelector("#addTaskTitle");
-// description
-const addTaskDescription = document.querySelector("#addTaskDescription");
-// category
-const addCategory = document.querySelector("#addCategory");
-// priority
-const addPriority = document.querySelector("#addPriority");
-// due date
-const addDueDate = document.querySelector("#addDueDate");
-// task status
-const addTaskStatus = document.querySelector("#addTaskStatus");
-// add task form error
-const addTaskFormError = document.querySelector("#addTaskFormError");
-
-// task add success message
-const addTaskSuccessMsg = document.querySelector("#addTaskSuccessMsg");
-
-// summary cards count
-// total tasks count
-const totalTasksCount = document.querySelector("#totalTasksCount");
-// pendin tasks count
-const pendingTasksCount = document.querySelector("#pendingTasksCount");
-// in-progress tasks count
-const  inProgressTasksCount = document.querySelector("#inProgressTasksCount");
-// completed tasks count
-const completedTasksCount = document.querySelector("#completedTasksCount");
 
 // tasks card container
 const tasksContainer = document.querySelector("#tasksContainer");
@@ -141,6 +99,7 @@ const deleteTaskSuccessMsg = document.querySelector("#deleteTaskSuccessMsg");
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
 const tasksArray = tasksArrayString === null? [] : JSON.parse(tasksArrayString);
+console.log(tasksArray);
 
 // 
 // Variables end
@@ -191,42 +150,6 @@ function deactivateBgCover() {
     backgroundCover.classList.add("opacity-0");
     backgroundCover.classList.add("pointer-events-none");
     body.classList.remove("overflow-hidden");
-}
-
-// function - open add task modal
-function openAddTaskModal() {
-    addTaskModal.classList.remove("-translate-y-full");
-    addTaskModal.classList.remove("opacity-0");
-    activateBgCover();
-}
-// function - close add task modal
-function closeAddTaskModal() {
-    addTaskModal.classList.add("-translate-y-full");
-    addTaskModal.classList.add("opacity-0");
-    addTaskFormError.classList.add("hidden");
-    deactivateBgCover();
-}
-// function - show add task success message
-function taskAddSuccess() {
-    addTaskSuccessMsg.classList.remove("opacity-0");
-    setTimeout(() => {
-        addTaskSuccessMsg.classList.add("opacity-0");
-    }, 3000);
-}
-
-// function - get summary cards count
-function getSummaryCardsCount() {
-    // total tasks count
-    totalTasksCount.textContent = tasksArray.length;
-
-    // pending tasks count
-    pendingTasksCount.textContent = tasksArray.filter((task) => task.status === "pending").length;
-
-    // in-progress tasks count
-    inProgressTasksCount.textContent =  tasksArray.filter((task) => task.status === "in-progress").length;
-
-    // completed tasks count
-    completedTasksCount.textContent = tasksArray.filter((task) => task.status === "completed").length;
 }
 
 // function - create task card
@@ -280,15 +203,6 @@ function createTaskCard(task) {
     // event listener - click to open task details modal
     taskCard.addEventListener("click", () => {
         showTaskDetails(task, formattedDueDate);
-    });
-}
-
-// function - display 3 latest task cards
-function displayTaskCards() {
-    tasksContainer.innerHTML = "";
-    const latestTasks = tasksArray.slice(-3).reverse();
-    latestTasks.forEach((task) => {
-        createTaskCard(task);
     });
 }
 
@@ -367,15 +281,25 @@ function taskDeleteSuccess() {
     }, 3000);
 }
 
-// function - render tasks
+// function - display 3 latest task cards
+function displayTaskCards() {
+    tasksContainer.innerHTML = "";
+    const tasksToDisplay = tasksArray.slice();
+    tasksToDisplay.reverse().forEach((task) => {
+    createTaskCard(task)
+    });
+}
+
 function render() {
-    getSummaryCardsCount();
     displayTaskCards();
 }
 
+
+
+
 // 
 // Functions end
-// 
+//
 
 
 
@@ -387,7 +311,6 @@ function render() {
 backgroundCover.addEventListener("click", () => {
     deactivateBgCover();
     closeMobileMenu();
-    closeAddTaskModal();
     closeTaskDetails();
     closeEditTaskModal();
     closeDeleteConfirm();
@@ -423,52 +346,6 @@ openMobileMenuBtn.addEventListener("click", () => {
 closeMobileMenuBtn.addEventListener("click", () => {
     closeMobileMenu();
     deactivateBgCover();
-});
-
-// add task modal
-// event listener - open add task modal
-addTaskBtn.addEventListener("click", openAddTaskModal);
-// event listener - close add task modal
-addTaskModalCloseBtn.addEventListener("click", closeAddTaskModal);
-// event listener - cancel add task
-taskCancelBtn.addEventListener("click", closeAddTaskModal);
-// event listener - add task form submit
-addTaskForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    // input values
-    const taskTitle = addTaskTitle.value.trim();
-    const taskDescription = addTaskDescription.value.trim();
-    const taskCategory = addCategory.value;
-    const taskPriority = addPriority.value;
-    const taskDueDate = addDueDate.value;
-    const taskStatus = addTaskStatus.value;
-
-    if (taskTitle === "" || taskDueDate === "") {
-        addTaskFormError.classList.remove("hidden");
-        return;
-    }
-    
-    const task = {
-        title : taskTitle,
-        description : taskDescription,
-        category : taskCategory,
-        priority : taskPriority,
-        dueDate : taskDueDate,
-        status : taskStatus,
-        previousStatus : taskStatus
-    };
-
-    tasksArray.push(task);
-    const tasksArrayString = JSON.stringify(tasksArray);
-    localStorage.setItem("all-tasks", tasksArrayString);
-
-    addTaskForm.reset();
-
-    closeAddTaskModal();
-    taskAddSuccess();
-    createTaskCard(task);
-    render();
 });
 
 // task details modal
@@ -562,22 +439,17 @@ confirmDeleteBtn.addEventListener("click", () => {
     render();
 });
 // event listener - cancel confirm delete
-cancelConfirmDeleteBtn.addEventListener("click", closeDeleteConfirm); 
-
+cancelConfirmDeleteBtn.addEventListener("click", closeDeleteConfirm);
 
 // 
 // Event Listeners end
-// 
+//
 
 
-
-
-// render theme
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
     document.documentElement.classList.add("dark");
 }
-updateThemeIcon();
 
-// render tasks
+updateThemeIcon();
 render();

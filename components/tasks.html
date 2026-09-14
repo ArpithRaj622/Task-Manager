@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <title>Task Manager</title>
 
-    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="../dist/output.css">
 
-    <!-- <style>
-        * {
-            border: 1px solid red;
-        }
-    </style> -->
+    <title>My tasks</title>
+
 </head>
-
 <body>
     <!-- header -->
     <header>
@@ -64,8 +58,8 @@
             </button>
         </div>
         <div class="mobile-nav-links">
-            <a href="./index.html">Dashboard</a>
-            <a href="./components/tasks.html">My Tasks</a>
+            <a href="../index.html">Dashboard</a>
+            <a href="./tasks.html">My Tasks</a>
             <a href="#">Completed</a>
         </div>
     </nav>
@@ -73,10 +67,10 @@
     <!-- desktop nav -->
     <aside>
         <div class="desktop-nav-menu">
-            <a href="./index.html">
+            <a href="../index.html">
                 <i class="fa-solid fa-table-columns"></i>Dashboard
             </a>
-            <a href="./components/tasks.html">
+            <a href="./tasks.html">
                 <i class="fa-regular fa-clipboard"></i>My Tasks
             </a>
             <a href="#">
@@ -90,149 +84,14 @@
 
     <!-- main content -->
     <main class="main-content">
-        <!-- add task button-->
-        <div class="add-task">
-            <button aria-label="Add task button" id="addTaskBtn">
-                <i class="fa-solid fa-plus"></i>
-                Add Task
-            </button>
-        </div>
-
-        <!-- add task modal  -->
-        <div class="add-task-modal -translate-y-full opacity-0" id="addTaskModal">
-            <!-- form header -->
-            <div class="header">
-                <p>Add Task</p>
-                <button class="form-close-btn" id="addTaskModalCloseBtn">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!-- form -->
-            <form action="" id="addTaskForm">
-                <!-- title -->
-                <div>
-                    <label for="task-title">Task Title:</label>
-                    <input type="text" name="taskTitle" id="addTaskTitle">
-                </div>
-                <!-- description -->
-                <div>
-                    <label for="task-description">Description: <span class="desc-optional">(optional)</span></label>
-                    <textarea name="taskDescription" id="addTaskDescription"></textarea>
-                </div>
-                <!-- category -->
-                <div>
-                    <label for="category">Select Category:</label>
-                    <select name="category" id="addCategory">
-                        <option value="work">Work</option>
-                        <option value="personal">Personal</option>
-                        <option value="study">Study</option>
-                    </select>
-                </div>
-                <!-- priority -->
-                <div>
-                    <label for="priority">Priority:</label>
-                    <select name="priority" id="addPriority">
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                </div>
-                <!-- due date -->
-                <div>
-                    <label for="due-date">Due date:</label> 
-                    <input type="date" name="dueDate" id="addDueDate">
-                </div>
-                <!-- status -->
-                <div>
-                    <label for="status">Status:</label>
-                    <select name="taskStatus" id="addTaskStatus">
-                        <option value="pending">Pending</option>
-                        <option value="in-progress">In Progress</option>
-                    </select>
-                </div>
-                <!-- form error message -->
-                <div>
-                    <p class="form-error hidden" id="addTaskFormError">Please fill in all required fields.</p>
-                </div>
-                <!-- buttons -->
-                <div class="form-action-btns">
-                    <button type="submit" id="taskAddBtn">
-                        Add Task
-                    </button>
-                    <button type="button" id="taskCancelBtn">
-                        Cancel
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <!-- task added successfully modal -->
-        <div class="add-task-success-modal opacity-0" id="addTaskSuccessMsg">
-            <i class="fa-solid fa-circle-check text-green-600"></i>
-            <p>Task added successfully!</p>
-        </div>
-
-
-        <!-- dashboard -->
-        <div class="dashboard-content">
-            <!-- dashboard heading -->
-            <div class="dashboard-heading">
-                <h2>Dashboard</h2>
-                <p>Manage your tasks and stay organized</p>
-            </div>
-
-            <!-- summary cards -->
-            <div class="summary-cards-container">
-                <!-- total tasks -->
-                <div class="summary-card" id="totalTasksCard"> 
-                    <div class="card-icon-label">
-                        <i class="fa-solid fa-list-check text-blue-700"></i>
-                        <p class="card-label">Total Tasks</p>
-                    </div>
-                    <p class="card-value" id="totalTasksCount"></p>
-                </div>
-                <!-- pending tasks -->
-                <div class="summary-card" id="pendingTasksCard">
-                    <div class="card-icon-label">
-                        <i class="fa-solid fa-clock text-red-500"></i>
-                        <p class="card-label">Pending</p>
-                    </div>
-                    <p class="card-value" id="pendingTasksCount"></p>
-                </div>
-                <!-- in-progress tasks -->
-                <div class="summary-card" id="inProgressTasksCard">
-                    <div class="card-icon-label">
-                        <i class="fa-solid fa-spinner text-amber-500"></i>
-                        <p class="card-label">In Progress</p>
-                    </div>
-                    <p class="card-value" id="inProgressTasksCount"></p>
-                </div>
-                <!-- completed tasks -->
-                <div class="summary-card" id="completedTasksCard">
-                    <div class="card-icon-label">
-                        <i class="fa-solid fa-circle-check text-green-600"></i>
-                        <p class="card-label">Completed</p>
-                    </div>
-                    <p class="card-value" id="completedTasksCount"></p>
-                </div>
-            </div>
-
-            <!-- my tasks  -->
-            <div class="my-tasks">
-                <h3>My Tasks</h3>
-                
-                <!-- tasks container -->
-                <div class="tasks-container" id="tasksContainer">
-                    
-                </div>
-
-                <!-- link -->
-                <div class="view-all-tasks">
-                    <a href="./components/tasks.html">View All Tasks</a>
-                </div>
+        <!-- my tasks -->
+        <div class="my-tasks">
+            
+            <!-- tasks container -->
+            <div class="tasks-container" id="tasksContainer">
                 
             </div>
+            
         </div>
 
         <!-- task details modal -->
@@ -365,6 +224,6 @@
         </div>
     </main>
 
-    <script src="./src/script.js" defer></script>
+    <script src="./tasks.js" defer></script>
 </body>
 </html>
