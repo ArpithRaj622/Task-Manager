@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="../dist/output.css">
 
-    <title>My tasks</title>
+    <title>Priorities</title>
 
 </head>
 <body>
@@ -85,14 +85,25 @@
 
     <!-- main content -->
     <main class="main-content">
-        <!-- my tasks -->
-        <div class="my-tasks">
-            
-            <!-- tasks container -->
-            <div class="tasks-container" id="tasksContainer">
-                
+        <!-- priorities tasks -->
+        <div class="my-tasks" id="priority-levels">
+            <!-- high priority -->
+            <div>
+                <h2 class="priority-heading">High Priority</h2>
+                <div class="tasks-container" id="highPriorityTasks"></div>
             </div>
-            
+
+            <!-- medium priority -->
+            <div>
+                <h2 class="priority-heading">Medium Priority</h2>
+                <div class="tasks-container" id="mediumPriorityTasks"></div>
+            </div>
+
+            <!-- low priority -->
+            <div>
+                <h2 class="priority-heading">Low Priority</h2>
+                <div class="tasks-container" id="lowPriorityTasks"></div>
+            </div>
         </div>
 
         <!-- task details modal -->
@@ -225,6 +236,6 @@
         </div>
     </main>
 
-    <script src="./tasks.js" defer></script>
+    <script src="./priorities.js" defer></script>
 </body>
 </html>

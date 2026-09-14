@@ -826,3 +826,16 @@ aside {
 .delete-task-success-modal i {
     @apply text-lg;
 }
+
+#priority-levels {
+    @apply flex
+    flex-col
+    gap-12;
+}
+
+#priority-levels .priority-heading {
+    @apply text-center
+    my-4
+    font-bold
+    text-xl;
+}

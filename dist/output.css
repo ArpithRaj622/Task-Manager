@@ -1497,6 +1497,19 @@ aside {
   font-size: var(--text-lg);
   line-height: var(--tw-leading, var(--text-lg--line-height));
 }
+#priority-levels {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 12);
+}
+#priority-levels .priority-heading {
+  margin-block: calc(var(--spacing) * 4);
+  text-align: center;
+  font-size: var(--text-xl);
+  line-height: var(--tw-leading, var(--text-xl--line-height));
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;

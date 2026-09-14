@@ -27,9 +27,6 @@ const closeMobileMenuBtn = document.querySelector("#closeMobileMenuBtn");
 // mobile menu
 const mobileMenu = document.querySelector("#mobileMenu");
 
-// tasks card container
-const tasksContainer = document.querySelector("#tasksContainer");
-
 // task details
 // task details modal 
 const taskDetailsModal = document.querySelector(".task-details-modal");
@@ -95,6 +92,11 @@ const confirmDeleteBtn = document.querySelector("#confirmDeleteBtn");
 const cancelConfirmDeleteBtn = document.querySelector("#cancelConfirmDeleteBtn");
 // task delete success message
 const deleteTaskSuccessMsg = document.querySelector("#deleteTaskSuccessMsg");
+
+// priority task level containers
+const highPriorityTasks = document.querySelector("#highPriorityTasks");
+const mediumPriorityTasks = document.querySelector("#mediumPriorityTasks");
+const lowPriorityTasks = document.querySelector("#lowPriorityTasks");
 
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
@@ -198,7 +200,18 @@ function createTaskCard(task) {
     taskCard.append(cardTitleStatus, cardDueDate);
 
     // taskCard append into tasksContainer
-    tasksContainer.append(taskCard);
+    if (task.priority === "high") {
+        highPriorityTasks.append(taskCard);
+    }
+
+    if (task.priority === "medium") {
+        mediumPriorityTasks.append(taskCard);
+    } 
+
+    if (task.priority === "low") {
+        lowPriorityTasks.append(taskCard);
+    }
+    
 
     // event listener - click to open task details modal
     taskCard.addEventListener("click", () => {
@@ -283,11 +296,13 @@ function taskDeleteSuccess() {
 
 // function - display 3 latest task cards
 function displayTaskCards() {
-    tasksContainer.innerHTML = "";
+    highPriorityTasks.innerHTML = "";
+    mediumPriorityTasks.innerHTML = "";
+    lowPriorityTasks.innerHTML = "";
     // the latest appear at top
     const tasksToDisplay = tasksArray.slice();
     tasksToDisplay.reverse().forEach((task) => {
-    createTaskCard(task)
+    createTaskCard(task);
     });
 }
 
