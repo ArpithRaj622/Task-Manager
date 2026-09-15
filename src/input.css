@@ -279,7 +279,7 @@ aside {
 }
 
 
-.add-task-modal #addTaskForm #addTaskTitle, #addTaskDescription, #addCategory, #addPriority, #addDueDate, #addTaskStatus {
+#addTaskTitle, #addTaskDescription, #addCategory, #addPriority, #addDueDate, #addTaskStatus {
     @apply bg-slate-50 
     p-1
     border 
@@ -674,7 +674,7 @@ aside {
 }
 
 /* input fields */
-.edit-task-modal #editTaskTitle, #editTaskDescription, #editCategory, #editPriority, #editDueDate, #editTaskStatus {
+#editTaskTitle, #editTaskDescription, #editCategory, #editPriority, #editDueDate, #editTaskStatus {
     @apply bg-slate-50  
     p-1 
     border 

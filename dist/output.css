@@ -693,7 +693,7 @@ aside {
   line-height: var(--tw-leading, var(--text-xs--line-height));
   color: var(--color-slate-400);
 }
-.add-task-modal #addTaskForm #addTaskTitle, #addTaskDescription, #addCategory, #addPriority, #addDueDate, #addTaskStatus {
+#addTaskTitle, #addTaskDescription, #addCategory, #addPriority, #addDueDate, #addTaskStatus {
   cursor: pointer;
   border-radius: var(--radius-md);
   border-style: var(--tw-border-style);
@@ -1247,7 +1247,7 @@ aside {
   line-height: var(--tw-leading, var(--text-xs--line-height));
   color: var(--color-slate-400);
 }
-.edit-task-modal #editTaskTitle, #editTaskDescription, #editCategory, #editPriority, #editDueDate, #editTaskStatus {
+#editTaskTitle, #editTaskDescription, #editCategory, #editPriority, #editDueDate, #editTaskStatus {
   cursor: pointer;
   border-radius: var(--radius-md);
   border-style: var(--tw-border-style);

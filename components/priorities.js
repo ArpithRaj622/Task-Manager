@@ -101,8 +101,6 @@ const lowPriorityTasks = document.querySelector("#lowPriorityTasks");
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
 const tasksArray = tasksArrayString === null? [] : JSON.parse(tasksArrayString);
-console.log(tasksArray);
-
 // 
 // Variables end
 // 
@@ -416,7 +414,7 @@ editTaskForm.addEventListener("submit", (event) => {
         return;
     }
     
-    editedTask = {
+    const editedTask = {
         title : taskTitle,
         description : taskDescription,
         category : taskCategory,

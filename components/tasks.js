@@ -98,7 +98,7 @@ const deleteTaskSuccessMsg = document.querySelector("#deleteTaskSuccessMsg");
 
 // url search params for tasks filter
 const urlParams = new URLSearchParams(window.location.search);
-const status = urlParams.get("status");
+const status = urlParams.get("status") || "all";
 
 // filter buttons
 // all tasks btn
@@ -477,7 +477,7 @@ editTaskForm.addEventListener("submit", (event) => {
         return;
     }
     
-    editedTask = {
+    const editedTask = {
         title : taskTitle,
         description : taskDescription,
         category : taskCategory,

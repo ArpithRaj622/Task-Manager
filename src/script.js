@@ -551,7 +551,7 @@ editTaskForm.addEventListener("submit", (event) => {
         return;
     }
     
-    editedTask = {
+    const editedTask = {
         title : taskTitle,
         description : taskDescription,
         category : taskCategory,

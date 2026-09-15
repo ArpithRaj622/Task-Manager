@@ -8,15 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <title>Task Manager</title>
 
     <link rel="stylesheet" href="./dist/output.css">
 
-    <!-- <style>
-        * {
-            border: 1px solid red;
-        }
-    </style> -->
+    <title>Task Manager</title>
 </head>
 
 <body>
@@ -113,17 +108,17 @@
             <form action="" id="addTaskForm">
                 <!-- title -->
                 <div>
-                    <label for="task-title">Task Title:</label>
+                    <label for="addTaskTitle">Task Title:</label>
                     <input type="text" name="taskTitle" id="addTaskTitle">
                 </div>
                 <!-- description -->
                 <div>
-                    <label for="task-description">Description: <span class="desc-optional">(optional)</span></label>
+                    <label for="addTaskDescription">Description: <span class="desc-optional">(optional)</span></label>
                     <textarea name="taskDescription" id="addTaskDescription"></textarea>
                 </div>
                 <!-- category -->
                 <div>
-                    <label for="category">Select Category:</label>
+                    <label for="addCategory">Select Category:</label>
                     <select name="category" id="addCategory">
                         <option value="work">Work</option>
                         <option value="personal">Personal</option>
@@ -132,7 +127,7 @@
                 </div>
                 <!-- priority -->
                 <div>
-                    <label for="priority">Priority:</label>
+                    <label for="addPriority">Priority:</label>
                     <select name="priority" id="addPriority">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
@@ -141,12 +136,12 @@
                 </div>
                 <!-- due date -->
                 <div>
-                    <label for="due-date">Due date:</label> 
+                    <label for="addDueDate">Due date:</label> 
                     <input type="date" name="dueDate" id="addDueDate">
                 </div>
                 <!-- status -->
                 <div>
-                    <label for="status">Status:</label>
+                    <label for="addTaskStatus">Status:</label>
                     <select name="taskStatus" id="addTaskStatus">
                         <option value="pending">Pending</option>
                         <option value="in-progress">In Progress</option>
@@ -286,17 +281,17 @@
             <form action="" id="editTaskForm">
                 <!-- title -->
                 <div>
-                    <label for="task-title">Task Title:</label>
+                    <label for="editTaskTitle">Task Title:</label>
                     <input type="text" name="taskTitle" id="editTaskTitle">
                 </div>
                 <!-- description -->
                 <div>
-                    <label for="task-description">Description: <span class="desc-optional">(optional)</span></label>
+                    <label for="editTaskDescription">Description: <span class="desc-optional">(optional)</span></label>
                     <textarea name="taskDescription" id="editTaskDescription"></textarea>
                 </div>
                 <!-- category -->
                 <div>
-                    <label for="category">Select Category:</label>
+                    <label for="editCategory">Select Category:</label>
                     <select name="category" id="editCategory">
                         <option value="work">Work</option>
                         <option value="personal">Personal</option>
@@ -305,7 +300,7 @@
                 </div>
                 <!-- priority -->
                 <div>
-                    <label for="priority">Priority:</label>
+                    <label for="editPriority">Priority:</label>
                     <select name="priority" id="editPriority">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
@@ -314,15 +309,16 @@
                 </div>
                 <!-- due date -->
                 <div>
-                    <label for="due-date">Due date:</label> 
+                    <label for="editDueDate">Due date:</label> 
                     <input type="date" name="dueDate" id="editDueDate">
                 </div>
                 <!-- status -->
                 <div>
-                    <label for="status">Status:</label>
+                    <label for="editTaskStatus">Status:</label>
                     <select name="taskStatus" id="editTaskStatus">
                         <option value="pending">Pending</option>
                         <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
                     </select>
                 </div>
                 <!-- form error message -->

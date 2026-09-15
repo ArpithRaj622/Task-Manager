@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../dist/output.css">
 
     <title>My tasks</title>
-
 </head>
 <body>
     <!-- header -->
@@ -85,6 +84,7 @@
 
     <!-- main content -->
     <main class="main-content">
+        <!-- task filter buttons -->
         <div class="task-status-filter">
             <button aria-label="All tasks button" id="allTasksFilterBtn">All</button>
             <button aria-label="Pending tasks button" id="pendingTasksFilterBtn">Pending</button>
@@ -98,7 +98,6 @@
             <div class="tasks-container" id="tasksContainer">
                 
             </div>
-            
         </div>
 
         <!-- task details modal -->
@@ -151,17 +150,17 @@
             <form action="" id="editTaskForm">
                 <!-- title -->
                 <div>
-                    <label for="task-title">Task Title:</label>
+                    <label for="editTaskTitle">Task Title:</label>
                     <input type="text" name="taskTitle" id="editTaskTitle">
                 </div>
                 <!-- description -->
                 <div>
-                    <label for="task-description">Description: <span class="desc-optional">(optional)</span></label>
+                    <label for="editTaskDescription">Description: <span class="desc-optional">(optional)</span></label>
                     <textarea name="taskDescription" id="editTaskDescription"></textarea>
                 </div>
                 <!-- category -->
                 <div>
-                    <label for="category">Select Category:</label>
+                    <label for="editCategory">Select Category:</label>
                     <select name="category" id="editCategory">
                         <option value="work">Work</option>
                         <option value="personal">Personal</option>
@@ -170,7 +169,7 @@
                 </div>
                 <!-- priority -->
                 <div>
-                    <label for="priority">Priority:</label>
+                    <label for="editPriority">Priority:</label>
                     <select name="priority" id="editPriority">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
@@ -179,15 +178,16 @@
                 </div>
                 <!-- due date -->
                 <div>
-                    <label for="due-date">Due date:</label> 
+                    <label for="editDueDate">Due date:</label> 
                     <input type="date" name="dueDate" id="editDueDate">
                 </div>
                 <!-- status -->
                 <div>
-                    <label for="status">Status:</label>
+                    <label for="editTaskStatus">Status:</label>
                     <select name="taskStatus" id="editTaskStatus">
                         <option value="pending">Pending</option>
                         <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
                     </select>
                 </div>
                 <!-- form error message -->
