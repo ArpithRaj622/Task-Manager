@@ -40,7 +40,7 @@ header {
 
 .header-logo {
     @apply flex
-    gap-2
+    gap-1
     items-center;
 }
 
@@ -268,7 +268,7 @@ aside {
     @apply flex 
     flex-col 
     gap-3
-    max-h-[calc(100vh-100px)]
+    max-h-[calc(100vh-100px)] 
     overflow-y-auto;
 }
 
@@ -662,7 +662,9 @@ aside {
 .edit-task-modal #editTaskForm {
     @apply flex 
     flex-col 
-    gap-3;
+    gap-3
+    max-h-[calc(100vh-100px)]
+    overflow-y-auto;
 }
 
 /* form divs */
