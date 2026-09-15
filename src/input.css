@@ -46,7 +46,7 @@ header {
 
 h1 {
     @apply
-    text-base 
+    text-xl 
     md:text-2xl 
     font-bold;
 }
