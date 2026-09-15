@@ -38,8 +38,16 @@ header {
     dark:border-b-slate-800;
 }
 
+.header-logo {
+    @apply flex
+    gap-2
+    items-center;
+}
+
 h1 {
-    @apply text-2xl 
+    @apply
+    text-base 
+    md:text-2xl 
     font-bold;
 }
 
