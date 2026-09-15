@@ -98,6 +98,14 @@ const highPriorityTasks = document.querySelector("#highPriorityTasks");
 const mediumPriorityTasks = document.querySelector("#mediumPriorityTasks");
 const lowPriorityTasks = document.querySelector("#lowPriorityTasks");
 
+// tasks not found
+// high priority
+const highTasksNotFound = document.querySelector("#highTasksNotFound");
+// medium priority
+const mediumTasksNotFound = document.querySelector("#mediumTasksNotFound");
+// low priority
+const lowTasksNotFound = document.querySelector("#lowTasksNotFound");
+
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
 const tasksArray = tasksArrayString === null? [] : JSON.parse(tasksArrayString);
@@ -292,6 +300,31 @@ function taskDeleteSuccess() {
     }, 3000);
 }
 
+
+// function - check if task are empty
+function checkIfTasksEmpty() {
+    // high priority check
+    if (highPriorityTasks.innerHTML === "") {
+        highTasksNotFound.classList.remove("hidden");
+    } else {
+        highTasksNotFound.classList.add("hidden");
+    }
+
+    // medium priority check
+    if (mediumPriorityTasks.innerHTML === "") {
+        mediumTasksNotFound.classList.remove("hidden");
+    } else {
+        mediumTasksNotFound.classList.add("hidden");
+    }
+
+    // low priority check
+    if (lowPriorityTasks.innerHTML === "") {
+        lowTasksNotFound.classList.remove("hidden");
+    } else {
+        lowTasksNotFound.classList.add("hidden");
+    }
+}
+
 // function - display 3 latest task cards
 function displayTaskCards() {
     highPriorityTasks.innerHTML = "";
@@ -302,12 +335,13 @@ function displayTaskCards() {
     tasksToDisplay.reverse().forEach((task) => {
     createTaskCard(task);
     });
+
+    checkIfTasksEmpty();
 }
 
 function render() {
     displayTaskCards();
 }
-
 
 
 

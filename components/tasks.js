@@ -110,6 +110,9 @@ const inProgressTasksFilterBtn = document.querySelector("#inProgressTasksFilterB
 // completed tasks btn
 const completedTasksFilterBtn = document.querySelector("#completedTasksFilterBtn");
 
+// no tasks found
+const noTasksFound = document.querySelector("#noTasksFound");
+
 
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
@@ -296,6 +299,15 @@ function taskDeleteSuccess() {
     }, 3000);
 }
 
+// function - check if task are empty
+function checkIfTasksEmpty(tasksArray) {
+    if (tasksArray.length === 0) {
+        noTasksFound.classList.remove("hidden");
+    } else {
+        noTasksFound.classList.add("hidden");
+    }
+}
+
 // function - display 3 latest task cards
 function displayTaskCards() {
     tasksContainer.innerHTML = "";
@@ -304,8 +316,9 @@ function displayTaskCards() {
     if (status === "all") {
         const allTasks = tasksArray.slice();
         allTasks.reverse().forEach((task) => {
-            createTaskCard(task)
-        });  
+            createTaskCard(task);
+        });
+        checkIfTasksEmpty(allTasks);  
     }
     // pending tasks 
     else if (status === "pending") {
@@ -315,6 +328,7 @@ function displayTaskCards() {
         pendingTasks.reverse().forEach((task) => {
            createTaskCard(task); 
         });
+        checkIfTasksEmpty(pendingTasks);
     }
     // in-progress tasks
     else if (status === "in-progress") {
@@ -324,6 +338,7 @@ function displayTaskCards() {
         inProgressTasks.reverse().forEach((task) => {
             createTaskCard(task);
         });
+        checkIfTasksEmpty(inProgressTasks);
     }
     // completed tasks
     else if (status === "completed") {
@@ -333,6 +348,7 @@ function displayTaskCards() {
         completedTasks.reverse().forEach((task) => {
             createTaskCard(task);
         });
+        checkIfTasksEmpty(completedTasks);
     }  
 }
 

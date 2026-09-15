@@ -148,6 +148,12 @@ const cancelConfirmDeleteBtn = document.querySelector("#cancelConfirmDeleteBtn")
 // task delete success message
 const deleteTaskSuccessMsg = document.querySelector("#deleteTaskSuccessMsg");
 
+// view all tasks link
+const viewAllTasksLink = document.querySelector("#viewAllTasksLink");
+
+// no tasks found
+const noTasksFound = document.querySelector("#noTasksFound");
+
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
 const tasksArray = tasksArrayString === null? [] : JSON.parse(tasksArrayString);
@@ -377,9 +383,21 @@ function taskDeleteSuccess() {
     }, 3000);
 }
 
+// function - check if task are empty
+function checkIfTasksEmpty() {
+    if (tasksArray.length === 0) {
+        viewAllTasksLink.classList.add("hidden");
+        noTasksFound.classList.remove("hidden");
+    } else {
+        viewAllTasksLink.classList.remove("hidden");
+        noTasksFound.classList.add("hidden");
+    }
+}
+
 // function - render tasks
 function render() {
     getSummaryCardsCount();
+    checkIfTasksEmpty();
     displayTaskCards();
 }
 

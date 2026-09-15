@@ -867,3 +867,9 @@ aside {
     font-bold
     text-xl;
 }
+
+.no-tasks-found {
+    @apply text-center
+    my-10
+    text-slate-500;
+}
