@@ -59,6 +59,16 @@ const addTaskFormError = document.querySelector("#addTaskFormError");
 // task add success message
 const addTaskSuccessMsg = document.querySelector("#addTaskSuccessMsg");
 
+// summary cards
+// total tasks card
+const totalTasksCard = document.querySelector("#totalTasksCard");
+// pending tasks card
+const pendingTasksCard = document.querySelector("#pendingTasksCard");
+// in progress tasks card
+const inProgressTasksCard = document.querySelector("#inProgressTasksCard");
+// completed tasks card
+const completedTasksCard = document.querySelector("#completedTasksCard");
+
 // summary cards count
 // total tasks count
 const totalTasksCount = document.querySelector("#totalTasksCount");
@@ -469,6 +479,24 @@ addTaskForm.addEventListener("submit", (event) => {
     taskAddSuccess();
     createTaskCard(task);
     render();
+});
+
+// summary cards 
+// event listener - link to visit tasks.html?status=all
+totalTasksCard.addEventListener("click", () => {
+    window.location.href = "./components/tasks.html?status=all";
+});
+// event listener - link to visit tasks.html?status=pending
+pendingTasksCard.addEventListener("click", () => {
+    window.location.href = "./components/tasks.html?status=pending";
+});
+// event listener - link to visit tasks.html?status=in-progress
+inProgressTasksCard.addEventListener("click", () => {
+    window.location.href = "./components/tasks.html?status=in-progress";
+});
+// event listener - link to visit tasks.html?status=completed
+completedTasksCard.addEventListener("click", () => {
+    window.location.href = "./components/tasks.html?status=completed";
 });
 
 // task details modal

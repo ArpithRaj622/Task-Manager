@@ -96,10 +96,25 @@ const cancelConfirmDeleteBtn = document.querySelector("#cancelConfirmDeleteBtn")
 // task delete success message
 const deleteTaskSuccessMsg = document.querySelector("#deleteTaskSuccessMsg");
 
+// url search params for tasks filter
+const urlParams = new URLSearchParams(window.location.search);
+const status = urlParams.get("status");
+
+// filter buttons
+// all tasks btn
+const allTasksFilterBtn = document.querySelector("#allTasksFilterBtn");
+// pending tasks btn
+const pendingTasksFilterBtn = document.querySelector("#pendingTasksFilterBtn");
+// in-progress tasks btn
+const inProgressTasksFilterBtn = document.querySelector("#inProgressTasksFilterBtn");
+// completed tasks btn
+const completedTasksFilterBtn = document.querySelector("#completedTasksFilterBtn");
+
+
 // tasks array
 const tasksArrayString = localStorage.getItem("all-tasks");
 const tasksArray = tasksArrayString === null? [] : JSON.parse(tasksArrayString);
-console.log(tasksArray);
+
 
 // 
 // Variables end
@@ -285,16 +300,59 @@ function taskDeleteSuccess() {
 function displayTaskCards() {
     tasksContainer.innerHTML = "";
     // the latest appear at top
-    const tasksToDisplay = tasksArray.slice();
-    tasksToDisplay.reverse().forEach((task) => {
-    createTaskCard(task)
-    });
+    // all tasks
+    if (status === "all") {
+        const allTasks = tasksArray.slice();
+        allTasks.reverse().forEach((task) => {
+            createTaskCard(task)
+        });  
+    }
+    // pending tasks 
+    else if (status === "pending") {
+        const pendingTasks = tasksArray.filter((task) => {
+            return task.status === "pending";
+        });
+        pendingTasks.reverse().forEach((task) => {
+           createTaskCard(task); 
+        });
+    }
+    // in-progress tasks
+    else if (status === "in-progress") {
+        const inProgressTasks = tasksArray.filter((task) => {
+            return task.status === "in-progress";
+        });
+        inProgressTasks.reverse().forEach((task) => {
+            createTaskCard(task);
+        });
+    }
+    // completed tasks
+    else if (status === "completed") {
+        const completedTasks = tasksArray.filter((task) => {
+            return task.status === "completed";
+        });
+        completedTasks.reverse().forEach((task) => {
+            createTaskCard(task);
+        });
+    }  
+}
+
+// function - active filter
+function setActiveFilter() {
+    if (status === "all") {
+        allTasksFilterBtn.classList.add("active");
+    } else if (status === "pending") {
+        pendingTasksFilterBtn.classList.add("active");
+    } else if (status === "in-progress") {
+        inProgressTasksFilterBtn.classList.add("active");
+    } else if (status === "completed") {
+        completedTasksFilterBtn.classList.add("active");
+    }
 }
 
 function render() {
     displayTaskCards();
+    setActiveFilter();
 }
-
 
 
 
@@ -347,6 +405,24 @@ openMobileMenuBtn.addEventListener("click", () => {
 closeMobileMenuBtn.addEventListener("click", () => {
     closeMobileMenu();
     deactivateBgCover();
+});
+
+// filter buttons
+// event listener - switch filter
+allTasksFilterBtn.addEventListener("click", () => {
+    window.location.href = "./tasks.html?status=all";
+});
+// event listener - switch filter
+pendingTasksFilterBtn.addEventListener("click", () => {
+    window.location.href = "./tasks.html?status=pending";
+});
+// event listener - switch filter
+inProgressTasksFilterBtn.addEventListener("click", () => {
+    window.location.href = "./tasks.html?status=in-progress";
+});
+// event listener - switch filter
+completedTasksFilterBtn.addEventListener("click", () => {
+    window.location.href = "./tasks.html?status=completed";
 });
 
 // task details modal
